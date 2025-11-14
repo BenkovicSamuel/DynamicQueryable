@@ -2,9 +2,9 @@
   <PropertyGroup>
     <Description>AutoQueryable add auto querying functionality like OData with best url practices to Asp.Net Core.</Description>
     <AssemblyTitle>AutoQueryable add auto querying functionality like OData with best url practices to Asp.Net Core.</AssemblyTitle>
-    <Version>2.0.11-beta</Version>
+    <Version>5.0.11</Version>
     <Authors>Thibaut Renoncourt, Nils Goovaerts</Authors>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>AutoQueryable</AssemblyName>
     <PackageId>AutoQueryable</PackageId>
     <PackageTags>AutoQueryable;AutoQuery;OData</PackageTags>
@@ -20,18 +20,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.0" PrivateAssets="All" />
   </ItemGroup>
 
   <PropertyGroup>
     <LangVersion>7.1</LangVersion>
     <RepositoryUrl>https://github.com/trenoncourt/AutoQueryable</RepositoryUrl>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath></OutputPath>
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Serilog" Version="2.7.1" />
-    <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
     <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
   </ItemGroup>
 </Project>

@@ -106,13 +106,15 @@ namespace AutoQueryable.Core.Models
             }
         }
         private string _getOperandValue(string q, string clauseAlias) => Regex.Split(q, clauseAlias, RegexOptions.IgnoreCase)[1];
-
+        private string plusWord = "uniqplusreplacment";
         public IEnumerable<Criteria> GetCriterias<T>() where T : class
         {
             foreach (var qPart in _queryStringAccessor.QueryStringParts.Where(q => !q.IsHandled))
             {
-                var q = WebUtility.UrlDecode(qPart.Value);
-                
+                var qV = qPart.Value.Replace("+", plusWord);
+                var q = WebUtility.UrlDecode(qV);
+                q = q.Replace(plusWord, "+");
+
                 int subIndex = q.IndexOf('=');
                 if (subIndex == -1)
                 {
@@ -198,7 +200,7 @@ namespace AutoQueryable.Core.Models
             {
                 ColumnPath = columnPath,
                 Filter = filter,
-                Values = operands[1].Split(',')
+                Values = Regex.Split(operands[1], "/,")
             };
             return criteria;
         }

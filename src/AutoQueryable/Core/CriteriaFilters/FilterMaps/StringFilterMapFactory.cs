@@ -58,8 +58,8 @@ namespace AutoQueryable.Core.CriteriaFilters.FilterMaps
             {
                 var method = typeof(string).GetMethod("Contains", new[] { typeof(string) });
 
-                var leftToLower = Expression.Call(left, "ToLowerInvariant", null);
-                var rigthToLower = Expression.Call(right, "ToLowerInvariant", null);
+                var leftToLower = Expression.Call(left, "ToLower", null);
+                var rigthToLower = Expression.Call(right, "ToLower", null);
 
                 return _addNotNull(left, Expression.Call(leftToLower, method, rigthToLower));
             }),
@@ -67,8 +67,8 @@ namespace AutoQueryable.Core.CriteriaFilters.FilterMaps
             {
                 var method = typeof(string).GetMethod("IndexOf", new[] { typeof(string) });
                 
-                var leftToLower = Expression.Call(left, "ToLowerInvariant", null);
-                var rigthToLower = Expression.Call(right, "ToLowerInvariant", null);
+                var leftToLower = Expression.Call(left, "ToLower", null);
+                var rigthToLower = Expression.Call(right, "ToLower", null);
 
                 return _addNull(left, Expression.Not(Expression.Call(leftToLower, method, rigthToLower)));
             }),
@@ -78,8 +78,8 @@ namespace AutoQueryable.Core.CriteriaFilters.FilterMaps
             {
                 var method = typeof(string).GetMethod("StartsWith", new[] { typeof(string) });
 
-                var leftToLower = Expression.Call(left, "ToLowerInvariant", null);
-                var rigthToLower = Expression.Call(right, "ToLowerInvariant", null);
+                var leftToLower = Expression.Call(left, "ToLower", null);
+                var rigthToLower = Expression.Call(right, "ToLower", null);
 
                 return _addNotNull(left, Expression.Call(leftToLower, method, rigthToLower));
             }),  
@@ -87,8 +87,8 @@ namespace AutoQueryable.Core.CriteriaFilters.FilterMaps
             {
                 var method = typeof(string).GetMethod("StartsWith", new[] { typeof(string) });
 
-                var leftToLower = Expression.Call(left, "ToLowerInvariant", null);
-                var rigthToLower = Expression.Call(right, "ToLowerInvariant", null);
+                var leftToLower = Expression.Call(left, "ToLower", null);
+                var rigthToLower = Expression.Call(right, "ToLower", null);
 
                 return _addNull(left, Expression.Not(Expression.Call(leftToLower, method, rigthToLower)));
             }),
@@ -99,8 +99,8 @@ namespace AutoQueryable.Core.CriteriaFilters.FilterMaps
                 var method = typeof(string).GetMethod("EndsWith", new[] { typeof(string) });
                 //Expression.s
 
-                var leftToLower = Expression.Call(left, "ToLowerInvariant", null);
-                var rigthToLower = Expression.Call(right, "ToLowerInvariant", null);
+                var leftToLower = Expression.Call(left, "ToLower", null);
+                var rigthToLower = Expression.Call(right, "ToLower", null);
 
                 return _addNotNull(left, Expression.Call(leftToLower, method, rigthToLower));
             }),
@@ -108,8 +108,8 @@ namespace AutoQueryable.Core.CriteriaFilters.FilterMaps
             {
                 var method = typeof(string).GetMethod("EndsWith", new[] { typeof(string) });
 
-                var leftToLower = Expression.Call(left, "ToLowerInvariant", null);
-                var rigthToLower = Expression.Call(right, "ToLowerInvariant", null);
+                var leftToLower = Expression.Call(left, "ToLower", null);
+                var rigthToLower = Expression.Call(right, "ToLower", null);
 
                 return _addNull(left, Expression.Not(Expression.Call(leftToLower, method, rigthToLower)));
             }),

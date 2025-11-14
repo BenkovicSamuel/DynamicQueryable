@@ -53,7 +53,7 @@ namespace AutoQueryable.UnitTest
         {
             using (var context = new AutoQueryableDbContext())
             {
-                _queryStringAccessor.SetQueryString("productid=3,4,5");
+                _queryStringAccessor.SetQueryString("productid=3/,4/,5");
 
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.AutoQueryable(_autoQueryableContext)  as IQueryable<object>;
@@ -77,7 +77,7 @@ namespace AutoQueryable.UnitTest
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.AutoQueryable(_autoQueryableContext)  as IQueryable<object>;
 
-                query.Count().Should().Be(DataInitializer.ProductSampleCount / 2);
+                query.Count().Should().Be(DataInitializer.HalfProductSampleCountWithExtra);
             }
         }
 
@@ -99,7 +99,7 @@ namespace AutoQueryable.UnitTest
         {
             using (var context = new AutoQueryableDbContext())
             {
-                _queryStringAccessor.SetQueryString("productid=3,4&productid=5,6");
+                _queryStringAccessor.SetQueryString("productid=3/,4&productid=5/,6");
 
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.AutoQueryable(_autoQueryableContext)  as IQueryable<object>;
@@ -127,7 +127,7 @@ namespace AutoQueryable.UnitTest
 
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.AutoQueryable(_autoQueryableContext)  as IQueryable<object>;
-                query.Count().Should().Be(DataInitializer.ProductSampleCount / 2);
+                query.Count().Should().Be(DataInitializer.LoopProductSampleCount / 2);
                 query.Should().OnlyContain(product => product.GetType().GetProperty("Name").GetValue(product) == null);
             }
         }
@@ -140,7 +140,7 @@ namespace AutoQueryable.UnitTest
 
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.AutoQueryable(_autoQueryableContext)  as IQueryable<object>;
-                query.Count().Should().Be(DataInitializer.ProductSampleCount / 2);
+                query.Count().Should().Be(DataInitializer.HalfProductSampleCountWithExtra);
                 query.Should().OnlyContain(product => product.GetType().GetProperty("Name").GetValue(product) != null);
             }
         }
@@ -179,7 +179,7 @@ namespace AutoQueryable.UnitTest
 
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.AutoQueryable(_autoQueryableContext)  as IQueryable<object>;
-                query.Count().Should().Be(DataInitializer.ProductSampleCount / 2);
+                query.Count().Should().Be(DataInitializer.LoopProductSampleCount / 2);
             }
         }
         [Fact]
@@ -191,7 +191,7 @@ namespace AutoQueryable.UnitTest
 
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.AutoQueryable(_autoQueryableContext)  as IQueryable<object>;
-                query.Count().Should().Be(DataInitializer.ProductSampleCount / 2);
+                query.Count().Should().Be(DataInitializer.HalfProductSampleCountWithExtra);
             }
         }
         [Fact]
@@ -203,7 +203,7 @@ namespace AutoQueryable.UnitTest
 
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.AutoQueryable(_autoQueryableContext)  as IQueryable<object>;
-                query.Count().Should().Be(DataInitializer.ProductSampleCount / 2);
+                query.Count().Should().Be(DataInitializer.LoopProductSampleCount / 2);
             }
         }
         [Fact]
@@ -289,7 +289,7 @@ namespace AutoQueryable.UnitTest
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.AutoQueryable(_autoQueryableContext)  as IQueryable<object>;
 
-                query.Count().Should().Be(DataInitializer.ProductSampleCount / 2);
+                query.Count().Should().Be((DataInitializer.LoopProductSampleCount / 2) + 4 );
             }
         }
 
@@ -298,12 +298,12 @@ namespace AutoQueryable.UnitTest
         {
             using (var context = new AutoQueryableDbContext())
             {
-                _queryStringAccessor.SetQueryString("color=red,black");
+                _queryStringAccessor.SetQueryString("color=red/,black");
 
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.AutoQueryable(_autoQueryableContext)  as IQueryable<object>;
 
-                query.Count().Should().Be(DataInitializer.ProductSampleCount);
+                query.Count().Should().Be(DataInitializer.LoopProductSampleCount + 4);
             }
         }
 
@@ -332,7 +332,7 @@ namespace AutoQueryable.UnitTest
             {
                 var todayJsonFormated = DateTime.Today.ToString("yyyy-MM-dd");
                 var todayPlus8HourJsonFormated = DateTime.Today.AddHours(8).ToString("yyyy-MM-ddThh:mm:ss");
-                _queryStringAccessor.SetQueryString($"SellStartDate={todayJsonFormated},{todayPlus8HourJsonFormated}");
+                _queryStringAccessor.SetQueryString($"SellStartDate={todayJsonFormated}/,{todayPlus8HourJsonFormated}");
 
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.AutoQueryable(_autoQueryableContext)  as IQueryable<object>;

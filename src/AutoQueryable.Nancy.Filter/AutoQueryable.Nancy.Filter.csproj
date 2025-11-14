@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Description>AutoQueryable.Nancy.Filter add filterAttribute for AutoQueryable to Nancy.</Description>
     <Authors>Thibaut Renoncourt</Authors>
-    <VersionPrefix>1.7.0</VersionPrefix>
-    <Version>1.7.0</Version>
+    <VersionPrefix>5.0.0</VersionPrefix>
+    <Version>5.0.0</Version>
     <PackageLicenseUrl>https://raw.githubusercontent.com/trenoncourt/AutoQueryable/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/trenoncourt/AutoQueryable</PackageProjectUrl>
     <PackageTags>AutoQueryable;AutoQuery;OData;GraphQL</PackageTags>
@@ -28,7 +28,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
     <PackageReference Include="Nancy.Bootstrappers.Autofac" Version="2.0.0-clinteastwood" />
   </ItemGroup>
 

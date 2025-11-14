@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Description>AutoQueryable.AspNetCore.Filter add filterAttribute for AutoQueryable to Asp.Net Core.</Description>
     <AssemblyTitle>AutoQueryable.AspNetCore.Filter add filterAttribute for AutoQueryable to Asp.Net Core.</AssemblyTitle>
-    <Version>2.0.5-beta</Version>
+    <Version>5.0.0</Version>
     <Authors>Thibaut Renoncourt</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>AutoQueryable.AspNetCore.Filter</AssemblyName>
@@ -29,8 +29,8 @@
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoQueryable\AutoQueryable.csproj" />

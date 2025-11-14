@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoQueryable.UnitTest.Mock.Entities
@@ -11,7 +13,7 @@ namespace AutoQueryable.UnitTest.Mock.Entities
             SalesOrderDetail = new HashSet<SalesOrderDetail>();
         }
 
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string ProductNumber { get; set; }
         public string Color { get; set; }
@@ -35,5 +37,8 @@ namespace AutoQueryable.UnitTest.Mock.Entities
         public virtual ProductExtension ProductExtension { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual ProductModel ProductModel { get; set; }
+
+        public IEnumerable<ComplexClass> MyComplexClass { get; set; }
     }
+
 }

@@ -59,7 +59,7 @@ namespace AutoQueryable.UnitTest
                 var query = context.Product.AutoQueryable(_autoQueryableContext) as IQueryable<object>;
                 var products = (query as IEnumerable<Product>)?.ToList();
                 products.Should().NotBeNull();
-                products.Should().NotContain(p => p.Color != null || p.ProductId != 0);
+                products.Should().NotContain(p => p.Color != null || p.Id != 0);
                 products.Count().Should().Be(DataInitializer.DefaultToTakeCount);
             }
         }

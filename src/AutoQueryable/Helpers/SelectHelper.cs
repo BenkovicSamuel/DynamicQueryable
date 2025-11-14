@@ -196,7 +196,12 @@ namespace AutoQueryable.Helpers
             }
             var ctor = Expression.New(type);
 
-            return Expression.MemberInit(ctor, expressions.Select(p => Expression.Bind(type.GetProperty(p.Key, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance), p.Value)));
+            var exp = expressions.Select(p =>
+            {
+                return Expression.Bind(type.GetProperty(p.Key, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance), p.Value);
+            });
+
+            return Expression.MemberInit(ctor, exp);
         }
     }
 }

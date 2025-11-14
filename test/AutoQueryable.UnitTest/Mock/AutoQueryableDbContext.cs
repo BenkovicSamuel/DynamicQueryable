@@ -9,9 +9,9 @@ namespace AutoQueryable.UnitTest.Mock
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var consoleLoggerProvider = new ConsoleLoggerProvider((s, level) => true, true);
-            var loggerFactory = new LoggerFactory();
-            loggerFactory.AddProvider(consoleLoggerProvider);
+            var loggerFactory = LoggerFactory.Create(builder => {
+                builder.AddConsole();
+            });
             optionsBuilder.UseLoggerFactory(loggerFactory);
             optionsBuilder.UseInMemoryDatabase("test");
         }
@@ -19,6 +19,10 @@ namespace AutoQueryable.UnitTest.Mock
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<ProductExtension>().HasQueryFilter(b => !b.IsDeleted);
+
+            builder.Entity<Product>().OwnsMany(x => x.MyComplexClass).WithOwner(x => x.Product).HasForeignKey(x => x.ProductId);
+            builder.Entity<Product>().HasKey(x => x.Id);
+
         }
 
 
@@ -26,5 +30,6 @@ namespace AutoQueryable.UnitTest.Mock
         public DbSet<ProductCategory> ProductCategory { get; set; }
         public DbSet<ProductModel> ProductModel { get; set; }
         public DbSet<SalesOrderDetail> SalesOrderDetail { get; set; }
+        public DbSet<ComplexClass> MyComplexClass { get; set; }
     }
 }

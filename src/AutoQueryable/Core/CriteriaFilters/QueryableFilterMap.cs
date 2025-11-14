@@ -50,9 +50,9 @@ namespace AutoQueryable.Core.CriteriaFilters
         }
 
         public IQueryableFilter GetFilter(string alias) => QueryableFilters.OrderByDescending(f => f.Level).FirstOrDefault(f =>
-            string.Equals(f.Alias.ToLowerInvariant(), alias.ToLowerInvariant(), StringComparison.OrdinalIgnoreCase));
+            string.Equals(f.Alias.ToLower(), alias.ToLower(), StringComparison.OrdinalIgnoreCase));
         
 
-        public IQueryableFilter FindFilter(string queryParameterKey) => QueryableFilters.OrderByDescending(f => f.Level).FirstOrDefault(f => queryParameterKey.ToLowerInvariant().Contains(f.Alias.ToLowerInvariant()));
+        public IQueryableFilter FindFilter(string queryParameterKey) => QueryableFilters.OrderByDescending(f => f.Level).FirstOrDefault(f => queryParameterKey.ToLower().Contains(f.Alias.ToLower()));
     }
 }

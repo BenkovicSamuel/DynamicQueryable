@@ -256,16 +256,26 @@ namespace AutoQueryable.Helpers
             IEnumerable<PropertyInfo> properties = typeof(T).GetProperties();
             if (profile?.SortableProperties != null)
             {
-                properties = properties.Where(c => profile.SortableProperties.Contains(c.Name, StringComparer.OrdinalIgnoreCase));
+                properties = properties.Where(c => profile.SortableProperties.Contains(c.Name, StringComparer.OrdinalIgnoreCase)).ToList();
             }
             if (profile?.UnSortableProperties != null)
             {
-                properties = properties.Where(c => !profile.UnSortableProperties.Contains(c.Name, StringComparer.OrdinalIgnoreCase));
+                properties = properties.Where(c => !profile.UnSortableProperties.Contains(c.Name, StringComparer.OrdinalIgnoreCase)).ToList();
             }
 
-            properties = properties.Where(p => orderClause.Keys.Contains(p.Name, StringComparer.OrdinalIgnoreCase));
+            //How to keep order of selected properties same as orderClause more elegantly?
+            var selectedProperties = new List<PropertyInfo>();
+            foreach (var b in orderClause)
+            {
+                var match = properties.FirstOrDefault(x =>
+                    string.Compare(x.Name, b.Key, StringComparison.OrdinalIgnoreCase) == 0);
+                if (match != null)
+                {
+                    selectedProperties.Add(match);
+                }
+            }
 
-            var columns = properties.Select(v => new Column
+            var columns = selectedProperties.Select(v => new Column
             {
                 PropertyName = v.Name
             });

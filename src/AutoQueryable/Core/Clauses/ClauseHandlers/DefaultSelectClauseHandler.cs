@@ -62,12 +62,12 @@ namespace AutoQueryable.Core.Clauses.ClauseHandlers
                     if (IsGreaterThenMaxDepth(depth)) break;
                     
                     var columnName = selectionColumnPath[depth];
-                    var property = parentColumn.Type.GetTypeOrGenericType().GetProperties().FirstOrDefault(x => x.Name.ToLowerInvariant() == columnName.ToLowerInvariant());
+                    var property = parentColumn.Type.GetTypeOrGenericType().GetProperties().FirstOrDefault(x => x.Name.ToLower() == columnName.ToLower());
                     
                     if (property == null || IsGreaterThanMaxDepth(property, depth))
                         break;
 
-                    var key = string.Join(".", selectionColumnPath.Take(depth + 1)).ToLowerInvariant();
+                    var key = string.Join(".", selectionColumnPath.Take(depth + 1)).ToLower();
                     var currentColumn = _allSelectColumns.FirstOrDefault(all => all.Key == key);
                     if (currentColumn != null)
                     {
@@ -110,7 +110,7 @@ namespace AutoQueryable.Core.Clauses.ClauseHandlers
             {
                 if (!selectColumn.SubColumns.Any(x => x.Name.Equals(columnName, StringComparison.OrdinalIgnoreCase)))
                 {
-                    var subColumnKey = (selectColumn.Key + "." + columnName).ToLowerInvariant();
+                    var subColumnKey = (selectColumn.Key + "." + columnName).ToLower();
 
                     var type = selectColumn.Type;
                     if (selectColumn.Type.IsEnumerable())
@@ -224,7 +224,7 @@ namespace AutoQueryable.Core.Clauses.ClauseHandlers
             foreach (var columnName in selection)
             {
                 var property = _baseType.GetTypeOrGenericType().GetProperties().FirstOrDefault(x =>
-                    string.Equals(x.Name.ToLowerInvariant(), columnName.ToLowerInvariant(), StringComparison.Ordinal));
+                    string.Equals(x.Name.ToLower(), columnName.ToLower(), StringComparison.Ordinal));
 
                 if (property == null || IsGreaterThanMaxDepth(property, 0) || IsAnIndexerProperty(property))
                     continue;

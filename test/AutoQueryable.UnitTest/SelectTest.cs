@@ -11,6 +11,9 @@ using AutoQueryable.UnitTest.Mock.Dtos;
 using AutoQueryable.UnitTest.Mock.Entities;
 using FluentAssertions;
 using Xunit;
+using System.Collections.Generic;
+using AutoQueryable.Core.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace AutoQueryable.UnitTest
 {
@@ -772,7 +775,7 @@ namespace AutoQueryable.UnitTest
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.Select(p => new
                 {
-                    p.ProductId,
+                    p.Id,
                     p.Rowguid,
                     p.Name,
                     p.Color,
@@ -793,7 +796,7 @@ namespace AutoQueryable.UnitTest
         {
             using (var context = new AutoQueryableDbContext())
             {
-                _queryStringAccessor.SetQueryString("select=name,productextension.name&top=0");
+                _queryStringAccessor.SetQueryString("select=name,productextension.name&take=0");
 
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.AutoQueryable(_autoQueryableContext) as IQueryable<object>;
@@ -942,7 +945,7 @@ namespace AutoQueryable.UnitTest
                 var query = context.Product.AutoQueryable(_autoQueryableContext) as IQueryable<object>;
                 var properties = query.First().GetType().GetProperties();
 
-                properties.Length.Should().Be(21);
+                properties.Length.Should().Be(22);
                 
             }
         }
@@ -978,6 +981,25 @@ namespace AutoQueryable.UnitTest
 
                 properties.Length.Should().Be(2);
                 
+            }
+        }
+
+
+        [Fact]
+        public async Task SelectComplexClassTest()
+        {
+            using (var context = new AutoQueryableDbContext())
+            {
+                //var query = new QueryRequest()
+                //{
+                //    Query = "nameContains:i=MySpecialProduct",
+                //    DefaultToSelect = "ComplexClass,SalesOrderDetail"
+                //};
+                //DataInitializer.InitializeSeed(context);
+                //var result = context.Product.UseAutoQuery(query);
+                //var list = result.ToList();
+                //var product = list[1] as IListComplexClass;
+                //var property = product.ComplexClass.Count.Should().Be(1);
             }
         }
 

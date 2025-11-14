@@ -1,6 +1,5 @@
 ﻿using System;
 using Autofac;
-using AutoQueryable.AspNet;
 using AutoQueryable.Core.Clauses;
 using AutoQueryable.Core.Clauses.ClauseHandlers;
 using AutoQueryable.Core.CriteriaFilters;
@@ -24,7 +23,6 @@ namespace AutoQueryable.Extensions.Autofac
             builder.RegisterType<DefaultSelectClauseHandler>().AsImplementedInterfaces().InstancePerLifetimeScope();
             builder.RegisterType<DefaultOrderByClauseHandler>().AsImplementedInterfaces().InstancePerLifetimeScope();
             builder.RegisterType<DefaultWrapWithClauseHandler>().AsImplementedInterfaces().InstancePerLifetimeScope();
-            builder.RegisterType<AspNetQueryStringAccessor>().As<IQueryStringAccessor>().InstancePerLifetimeScope();
         }
     }
 

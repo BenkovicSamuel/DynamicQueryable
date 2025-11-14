@@ -24,15 +24,14 @@ namespace AutoQueryable.Sample.EfCore
             services
                 .AddMvcCore()
                 .AddApiExplorer()
-                .AddJsonFormatters(settings =>
+                .AddNewtonsoftJson(settings =>
                 {
-                    settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                    settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    settings.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    settings.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 })
                 .Services
                 .AddSwaggerGen(c =>
                 {
-                    c.SwaggerDoc("v1", new Info {Title = "My API", Version = "v1"});
                     c.AddAutoQueryable();
                 })
                 .AddDbContext<AutoQueryableDbContext>(options => options.UseInMemoryDatabase("InMemory"))

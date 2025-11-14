@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AutoQueryable.Sample.EfCore.Entities
+namespace DynamicQueryable.Sample.EfCore.Entities
 {
     public class ProductModel
     {

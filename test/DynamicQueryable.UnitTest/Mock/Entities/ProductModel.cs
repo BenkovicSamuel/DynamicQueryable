@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AutoQueryable.UnitTest.Mock.Entities
+namespace DynamicQueryable.UnitTest.Mock.Entities
 {
     public class ProductModel
     {

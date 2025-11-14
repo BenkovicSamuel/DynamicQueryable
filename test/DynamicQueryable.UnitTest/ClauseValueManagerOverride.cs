@@ -1,12 +1,12 @@
-﻿using AutoQueryable.Core.Clauses;
-using AutoQueryable.Core.Models;
+﻿using DynamicQueryable.Core.Clauses;
+using DynamicQueryable.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoQueryable.UnitTest
+namespace DynamicQueryable.UnitTest
 {
     public class ClauseValueManagerOverride : IClauseValueManager
     {

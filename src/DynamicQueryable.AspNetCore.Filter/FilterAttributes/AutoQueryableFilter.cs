@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using AutoQueryable.Core.Enums;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Enums;
+using DynamicQueryable.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace AutoQueryable.AspNetCore.Filter.FilterAttributes
+namespace DynamicQueryable.AspNetCore.Filter.FilterAttributes
 {
-    public class AutoQueryableFilter : IActionFilter
+    public class DynamicQueryableFilter : IActionFilter
     {
-        private readonly IAutoQueryableContext _autoQueryableContext;
-        private readonly IAutoQueryableProfile _autoQueryableProfile;
+        private readonly IDynamicQueryableContext _autoQueryableContext;
+        private readonly IDynamicQueryableProfile _autoQueryableProfile;
 
-        public AutoQueryableFilter(IAutoQueryableContext autoQueryableContext, IAutoQueryableProfile autoQueryableProfile)
+        public DynamicQueryableFilter(IDynamicQueryableContext autoQueryableContext, IDynamicQueryableProfile autoQueryableProfile)
         {
             _autoQueryableContext = autoQueryableContext;
             _autoQueryableProfile = autoQueryableProfile;
@@ -153,7 +153,7 @@ namespace AutoQueryable.AspNetCore.Filter.FilterAttributes
             
             dynamic query = ((ObjectResult)context.Result).Value;
             if (query == null) throw new Exception("Unable to retrieve value of IQueryable from context result.");
-            context.Result = new OkObjectResult(_autoQueryableContext.GetAutoQuery(query));
+            context.Result = new OkObjectResult(_autoQueryableContext.GetDynamicQuery(query));
         }
     }
 }

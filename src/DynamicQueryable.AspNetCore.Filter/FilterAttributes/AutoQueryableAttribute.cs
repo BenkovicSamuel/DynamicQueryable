@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AutoQueryable.Core.Enums;
-using AutoQueryable.Core.Models;
-using AutoQueryable.Core.Models.Abstractions;
+using DynamicQueryable.Core.Enums;
+using DynamicQueryable.Core.Models;
+using DynamicQueryable.Core.Models.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
 
-namespace AutoQueryable.AspNetCore.Filter.FilterAttributes
+namespace DynamicQueryable.AspNetCore.Filter.FilterAttributes
 {
-    public class AutoQueryableAttribute : Attribute, IFilterFactory, IAutoQueryableAttribute
+    public class DynamicQueryableAttribute : Attribute, IFilterFactory, IDynamicQueryableAttribute
     {
         public string[] SelectableProperties { get; set; }
 
@@ -80,7 +80,7 @@ namespace AutoQueryable.AspNetCore.Filter.FilterAttributes
 
         public IFilterMetadata CreateInstance(IServiceProvider serviceProvider)
         {
-            var autoQueryableFilter = serviceProvider.GetService<AutoQueryableFilter>();
+            var autoQueryableFilter = serviceProvider.GetService<DynamicQueryableFilter>();
             if (SelectableProperties != null)
             {
                 autoQueryableFilter.SelectableProperties = SelectableProperties;

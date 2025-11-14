@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutoQueryable.Core.Models
+namespace DynamicQueryable.Core.Models
 {
     public class RootColumn : SelectColumn
     {

@@ -2,7 +2,7 @@
 using Nancy;
 using Nancy.Bootstrapper;
 
-namespace AutoQueryable.Nancy.Filter
+namespace DynamicQueryable.Nancy.Filter
 {
     public interface INancyContextWrapper
     {

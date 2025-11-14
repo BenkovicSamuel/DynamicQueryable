@@ -1,7 +1,7 @@
 ﻿using System;
-using AutoQueryable.Core.CriteriaFilters.FilterMaps;
+using DynamicQueryable.Core.CriteriaFilters.FilterMaps;
 
-namespace AutoQueryable.Core.CriteriaFilters
+namespace DynamicQueryable.Core.CriteriaFilters
 {
     public class CriteriaFilterManager : ICriteriaFilterManager
     {

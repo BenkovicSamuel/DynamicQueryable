@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace AutoQueryable.Core.CriteriaFilters
+namespace DynamicQueryable.Core.CriteriaFilters
 {
     public class QueryableTypeFilter : IQueryableTypeFilter
     {

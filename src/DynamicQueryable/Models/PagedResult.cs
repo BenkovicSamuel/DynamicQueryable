@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AutoQueryable.Models
+namespace DynamicQueryable.Models
 {
     public class PagedResult<T> : IPagedResult<T>
     {

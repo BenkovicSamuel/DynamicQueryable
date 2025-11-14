@@ -1,4 +1,4 @@
-﻿namespace AutoQueryable.Models
+﻿namespace DynamicQueryable.Models
 {
     public class Column
     {

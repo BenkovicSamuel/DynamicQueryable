@@ -1,7 +1,7 @@
 ﻿using System;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Models;
 
-namespace AutoQueryable.Core.CriteriaFilters
+namespace DynamicQueryable.Core.CriteriaFilters
 {
     public interface ICriteriaFilterManager
     {

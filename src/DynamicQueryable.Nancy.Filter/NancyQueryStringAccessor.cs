@@ -1,6 +1,6 @@
-﻿using AutoQueryable.Core.Models.QueryStringAccessors;
+﻿using DynamicQueryable.Core.Models.QueryStringAccessors;
 
-namespace AutoQueryable.Nancy.Filter
+namespace DynamicQueryable.Nancy.Filter
 {
     public class NancyQueryStringAccessor : BaseQueryStringAccessor
     {

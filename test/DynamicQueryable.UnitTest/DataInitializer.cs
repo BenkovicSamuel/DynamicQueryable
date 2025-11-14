@@ -1,11 +1,11 @@
-﻿using AutoQueryable.UnitTest.Mock;
-using AutoQueryable.UnitTest.Mock.Entities;
+﻿using DynamicQueryable.UnitTest.Mock;
+using DynamicQueryable.UnitTest.Mock.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AutoQueryable.UnitTest
+namespace DynamicQueryable.UnitTest
 {
     [TestClass]
     public static class DataInitializer
@@ -16,9 +16,9 @@ namespace AutoQueryable.UnitTest
         public static readonly int HalfProductSampleCountWithExtra = (LoopProductSampleCount / 2) + 5;
         public static readonly int DefaultToTakeCount = 10;
         //[AssemblyInitialize()] 
-        public static void InitializeSeed(AutoQueryableDbContext dbContext)
+        public static void InitializeSeed(DynamicQueryableDbContext dbContext)
         {
-            //using (AutoQueryableContext context = new AutoQueryableContext())
+            //using (DynamicQueryableContext context = new DynamicQueryableContext())
             //{
                 if (dbContext.Product.Any())
                 {
@@ -198,7 +198,7 @@ namespace AutoQueryable.UnitTest
             dbContext.SaveChanges();
             //}
         }
-        public static void AddDateTimeSeeds(AutoQueryableDbContext dbContext)
+        public static void AddDateTimeSeeds(DynamicQueryableDbContext dbContext)
         {
             dbContext.Product.Add(new Product
             {

@@ -1,6 +1,6 @@
-﻿namespace AutoQueryable.AspNetCore.Filter.FilterAttributes
+﻿namespace DynamicQueryable.AspNetCore.Filter.FilterAttributes
 {
-    public interface IAutoQueryableAttribute
+    public interface IDynamicQueryableAttribute
     {
         
     }

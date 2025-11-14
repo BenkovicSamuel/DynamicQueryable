@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AutoQueryable.Core.CriteriaFilters
+namespace DynamicQueryable.Core.CriteriaFilters
 {
     public class QueryableTypeFilterMap : IQueryableTypeFilterMap
     {

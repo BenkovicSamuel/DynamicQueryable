@@ -1,4 +1,4 @@
-﻿namespace AutoQueryable.Core.Models
+﻿namespace DynamicQueryable.Core.Models
 {
     public class QueryStringPart
     {

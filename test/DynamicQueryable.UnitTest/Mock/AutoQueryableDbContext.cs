@@ -1,11 +1,11 @@
-using AutoQueryable.UnitTest.Mock.Entities;
+using DynamicQueryable.UnitTest.Mock.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 
-namespace AutoQueryable.UnitTest.Mock
+namespace DynamicQueryable.UnitTest.Mock
 {
-    public class AutoQueryableDbContext : DbContext
+    public class DynamicQueryableDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

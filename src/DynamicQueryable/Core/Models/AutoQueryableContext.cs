@@ -1,26 +1,26 @@
 ﻿using System.Linq;
-using AutoQueryable.Core.Clauses;
+using DynamicQueryable.Core.Clauses;
 
-namespace AutoQueryable.Core.Models
+namespace DynamicQueryable.Core.Models
 {
-    public class AutoQueryableContext : IAutoQueryableContext
+    public class DynamicQueryableContext : IDynamicQueryableContext
     {
-        private readonly IAutoQueryHandler _autoQueryHandler;
+   private readonly IDynamicQueryHandler _dynamicQueryHandler;
         public IQueryable<dynamic> TotalCountQuery { get; private set; }
         public IClauseValueManager ClauseValueManager { get; private set; }
         public string QueryString { get; private set; }
 
-        public AutoQueryableContext(IAutoQueryHandler autoQueryHandler)
+    public DynamicQueryableContext(IDynamicQueryHandler dynamicQueryHandler)
         {
-            _autoQueryHandler = autoQueryHandler;
+       _dynamicQueryHandler = dynamicQueryHandler;
         }
 
-        public dynamic GetAutoQuery<T>(IQueryable<T> query) where T : class
+        public dynamic GetDynamicQuery<T>(IQueryable<T> query) where T : class
         {
-            var result = _autoQueryHandler.GetAutoQuery(query);
-            TotalCountQuery = _autoQueryHandler.TotalCountQuery;
-            ClauseValueManager = _autoQueryHandler.ClauseValueManager;
-            QueryString = _autoQueryHandler.QueryString;
+          var result = _dynamicQueryHandler.GetDynamicQuery(query);
+ TotalCountQuery = _dynamicQueryHandler.TotalCountQuery;
+     ClauseValueManager = _dynamicQueryHandler.ClauseValueManager;
+   QueryString = _dynamicQueryHandler.QueryString;
             return result;
         }
     }

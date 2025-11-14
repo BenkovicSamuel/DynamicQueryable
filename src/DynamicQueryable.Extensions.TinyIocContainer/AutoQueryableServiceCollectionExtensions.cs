@@ -1,22 +1,22 @@
 ﻿using System;
-using AutoQueryable.Core.Clauses;
-using AutoQueryable.Core.Clauses.ClauseHandlers;
-using AutoQueryable.Core.CriteriaFilters;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Clauses;
+using DynamicQueryable.Core.Clauses.ClauseHandlers;
+using DynamicQueryable.Core.CriteriaFilters;
+using DynamicQueryable.Core.Models;
 using Nancy.TinyIoc;
 
-namespace AutoQueryable.Extensions.TinyIocContainer
+namespace DynamicQueryable.Extensions.TinyIocContainer
 {
-    public static class AutoQueryableServiceCollectionExtensions
+    public static class DynamicQueryableServiceCollectionExtensions
     {
-        public static void RegisterAutoQueryable(this TinyIoCContainer container, Action<AutoQueryableSettings> handler = null)
+        public static void RegisterDynamicQueryable(this TinyIoCContainer container, Action<DynamicQueryableSettings> handler = null)
         {
-            var settings = new AutoQueryableSettings();
+            var settings = new DynamicQueryableSettings();
             handler?.Invoke(settings);
-            container.Register<IAutoQueryableContext, AutoQueryableContext>();
+            container.Register<IDynamicQueryableContext, DynamicQueryableContext>();
             container.Register(settings);
-            container.Register<IAutoQueryableProfile, AutoQueryableProfile>();
-            container.Register<IAutoQueryHandler, AutoQueryHandler>();
+            container.Register<IDynamicQueryableProfile, DynamicQueryableProfile>();
+            container.Register<IDynamicQueryHandler, DynamicQueryHandler>();
             container.Register<IClauseValueManager, ClauseValueManager>();
             container.Register<ICriteriaFilterManager, CriteriaFilterManager>();
             container.Register<IClauseMapManager, ClauseMapManager>();

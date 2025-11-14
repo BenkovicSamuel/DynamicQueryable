@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoQueryable.AspNetCore.Filter.FilterAttributes;
+using DynamicQueryable.AspNetCore.Filter.FilterAttributes;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace AutoQueryable.AspNetCore.Swagger
+namespace DynamicQueryable.AspNetCore.Swagger
 {
-    public class AutoQueryableOperationFilter : IOperationFilter
+    public class DynamicQueryableOperationFilter : IOperationFilter
     {
         public void Apply(Operation operation, OperationFilterContext context)
         {
             // Policy names map to scopes
             var controllerScopes = context.ApiDescription.ActionAttributes()
-                .OfType<IAutoQueryableAttribute>();
+                .OfType<IDynamicQueryableAttribute>();
 
             if (controllerScopes.Any())
             {

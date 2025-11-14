@@ -1,16 +1,16 @@
 ﻿using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using AutoQueryable.Core.Models;
-using AutoQueryable.Models;
+using DynamicQueryable.Core.Models;
+using DynamicQueryable.Models;
 
-namespace AutoQueryable.Extensions
+namespace DynamicQueryable.Extensions
 {
     public static class QueryableExtension
     {
-        //public static IQueryable<object> AutoQueryable(this IQueryable<object> query, IAutoQueryableContext context) => context.GetAutoQuery(query);
+        //public static IQueryable<object> DynamicQueryable(this IQueryable<object> query, IDynamicQueryableContext context) => context.GetDynamicQuery(query);
 
-        public static dynamic AutoQueryable<TEntity>(this IQueryable<TEntity> query, IAutoQueryableContext context) where TEntity : class => context.GetAutoQuery(query);
+        public static dynamic DynamicQueryable<TEntity>(this IQueryable<TEntity> query, IDynamicQueryableContext context) where TEntity : class => context.GetDynamicQuery(query);
 
         public static IQueryable<T> Call<T>(this IQueryable<T> source, string method, string propertyName)
         {
@@ -25,7 +25,7 @@ namespace AutoQueryable.Extensions
         }
 
         // TODO: Implement WrapWith
-        public static dynamic ToAutoQueryListResult<TEntity>(this IQueryable<TEntity> query, IAutoQueryableContext context) where TEntity : class
+        public static dynamic ToAutoQueryListResult<TEntity>(this IQueryable<TEntity> query, IDynamicQueryableContext context) where TEntity : class
         {
             if(!context.ClauseValueManager.WrapWith.Any())
             {
@@ -49,7 +49,7 @@ namespace AutoQueryable.Extensions
                 Result = result
             };
         }
-        //private static dynamic _getWrappedResult(QueryResult queryResult, IAutoQueryableContext context)
+        //private static dynamic _getWrappedResult(QueryResult queryResult, IDynamicQueryableContext context)
         //{
         //    dynamic wrapper = new ExpandoObject();
         //    wrapper.Result = (queryResult.Result as IQueryable<object>).ToList();

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
-using AutoQueryable.Core.Aliases;
+using DynamicQueryable.Core.Aliases;
 
-namespace AutoQueryable.Core.CriteriaFilters.FilterMaps
+namespace DynamicQueryable.Core.CriteriaFilters.FilterMaps
 {
     public class DateTimeFilterMapFactory
     {

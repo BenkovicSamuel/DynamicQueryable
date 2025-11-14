@@ -1,10 +1,10 @@
 ﻿using System;
-using AutoQueryable.AspNetCore.Filter.FilterAttributes;
+using DynamicQueryable.AspNetCore.Filter.FilterAttributes;
 
-namespace AutoQueryable.AspNetCore.Swagger
+namespace DynamicQueryable.AspNetCore.Swagger
 {
     [AttributeUsage(AttributeTargets.Method)]
-    public class AutoQueryableSwaggerAttribute : Attribute, IAutoQueryableAttribute
+    public class DynamicQueryableSwaggerAttribute : Attribute, IDynamicQueryableAttribute
     {
     }
 }

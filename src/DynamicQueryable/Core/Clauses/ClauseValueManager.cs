@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using AutoQueryable.Core.Clauses.ClauseHandlers;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Clauses.ClauseHandlers;
+using DynamicQueryable.Core.Models;
 
-namespace AutoQueryable.Core.Clauses
+namespace DynamicQueryable.Core.Clauses
 {
     public class ClauseValueManager : IClauseValueManager
     {
         private readonly ISelectClauseHandler _selectClauseHandler;
         private readonly IOrderByClauseHandler _orderByClauseHandler;
         private readonly IWrapWithClauseHandler _wrapWithClauseHandler;
-        private readonly IAutoQueryableProfile _profile;
+        private readonly IDynamicQueryableProfile _profile;
 
-        public ClauseValueManager(ISelectClauseHandler selectClauseHandler, IOrderByClauseHandler orderByClauseHandler, IWrapWithClauseHandler wrapWithClauseHandler, IAutoQueryableProfile profile)
+        public ClauseValueManager(ISelectClauseHandler selectClauseHandler, IOrderByClauseHandler orderByClauseHandler, IWrapWithClauseHandler wrapWithClauseHandler, IDynamicQueryableProfile profile)
         {
             _selectClauseHandler = selectClauseHandler;
             _orderByClauseHandler = orderByClauseHandler;

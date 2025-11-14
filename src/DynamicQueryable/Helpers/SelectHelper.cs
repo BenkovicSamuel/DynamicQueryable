@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Reflection.Emit;
-using AutoQueryable.Extensions;
+using DynamicQueryable.Extensions;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using AutoQueryable.Core.Extensions;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Extensions;
+using DynamicQueryable.Core.Models;
 
-namespace AutoQueryable.Helpers
+namespace DynamicQueryable.Helpers
 {
     internal static class RuntimeTypeBuilder
     {
@@ -19,8 +19,8 @@ namespace AutoQueryable.Helpers
 
         static RuntimeTypeBuilder()
         {
-            var dynamicAssembly = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName("AutoQueryableDynamicAssembly"), AssemblyBuilderAccess.Run);
-            moduleBuilder = dynamicAssembly.DefineDynamicModule("AutoQueryableDynamicAssemblyModule");
+            var dynamicAssembly = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName("DynamicQueryableDynamicAssembly"), AssemblyBuilderAccess.Run);
+            moduleBuilder = dynamicAssembly.DefineDynamicModule("DynamicQueryableDynamicAssemblyModule");
 
             builtTypes = new Dictionary<string, Type>();
         }
@@ -105,7 +105,7 @@ namespace AutoQueryable.Helpers
 
     public static class SelectHelper
     {
-        public static Expression<Func<TEntity, TResult>> GetSelector<TEntity, TResult>(ICollection<SelectColumn> selectColumns, IAutoQueryableProfile profile)
+        public static Expression<Func<TEntity, TResult>> GetSelector<TEntity, TResult>(ICollection<SelectColumn> selectColumns, IDynamicQueryableProfile profile)
         {
             var memberExpressions = new Dictionary<string, Expression>();
 
@@ -115,7 +115,7 @@ namespace AutoQueryable.Helpers
             return Expression.Lambda<Func<TEntity, TResult>>(memberInit, parameter);
         }
 
-        private static Expression GetMemberExpression<TEntity>(Expression parent, SelectColumn column, IAutoQueryableProfile profile, bool isLambdaBody = false)
+        private static Expression GetMemberExpression<TEntity>(Expression parent, SelectColumn column, IDynamicQueryableProfile profile, bool isLambdaBody = false)
         {
             var isCollection = parent.Type.IsEnumerableButNotString();
             // If the current column has no sub column, return the final property.
@@ -175,7 +175,7 @@ namespace AutoQueryable.Helpers
             });
         }
 
-        public static MemberInitExpression InitType<TEntity>(IEnumerable<SelectColumn> columns, Expression node, IAutoQueryableProfile profile)
+        public static MemberInitExpression InitType<TEntity>(IEnumerable<SelectColumn> columns, Expression node, IDynamicQueryableProfile profile)
         {
             var expressions = new Dictionary<string, Expression>();
             foreach (var subColumn in columns)

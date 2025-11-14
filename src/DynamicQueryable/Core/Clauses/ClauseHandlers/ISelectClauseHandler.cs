@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Models;
 
-namespace AutoQueryable.Core.Clauses.ClauseHandlers
+namespace DynamicQueryable.Core.Clauses.ClauseHandlers
 {
     public interface ISelectClauseHandler : IClauseHandler<ICollection<SelectColumn>>
     {

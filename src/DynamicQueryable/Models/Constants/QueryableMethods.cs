@@ -1,4 +1,4 @@
-﻿namespace AutoQueryable.Models.Constants
+﻿namespace DynamicQueryable.Models.Constants
 {
     public static class QueryableMethods
     {

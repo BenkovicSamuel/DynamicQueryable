@@ -1,4 +1,4 @@
-﻿namespace AutoQueryable.Sample.EfCore.Dtos
+﻿namespace DynamicQueryable.Sample.EfCore.Dtos
 {
     public class ProductDto
     {

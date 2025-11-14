@@ -4,15 +4,15 @@ using System.Dynamic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using AutoQueryable.Core.Aliases;
-using AutoQueryable.Core.Clauses;
-using AutoQueryable.Core.CriteriaFilters;
-using AutoQueryable.Core.Models;
-using AutoQueryable.Extensions;
-using AutoQueryable.Models;
-using AutoQueryable.Models.Constants;
+using DynamicQueryable.Core.Aliases;
+using DynamicQueryable.Core.Clauses;
+using DynamicQueryable.Core.CriteriaFilters;
+using DynamicQueryable.Core.Models;
+using DynamicQueryable.Extensions;
+using DynamicQueryable.Models;
+using DynamicQueryable.Models.Constants;
 
-namespace AutoQueryable.Helpers
+namespace DynamicQueryable.Helpers
 {
     public static class QueryBuilder
     {
@@ -26,7 +26,7 @@ namespace AutoQueryable.Helpers
             return query;
         }
 
-        public static dynamic Build<T>(IClauseValueManager clauseValueManager, IQueryable<T> query, IAutoQueryableProfile profile) where T : class
+        public static dynamic Build<T>(IClauseValueManager clauseValueManager, IQueryable<T> query, IDynamicQueryableProfile profile) where T : class
         {
             var totalCountQuery = query;
             query = _addOrderBy(query, clauseValueManager.OrderBy, profile);
@@ -62,7 +62,7 @@ namespace AutoQueryable.Helpers
             return queryProjection.HandleWrapping(clauseValueManager, totalCountQuery);
         }
 
-        private static IQueryable<T> _handlePaging<T>(IClauseValueManager clauseValueManager, IQueryable<T> query, IAutoQueryableProfile profile) where T : class
+        private static IQueryable<T> _handlePaging<T>(IClauseValueManager clauseValueManager, IQueryable<T> query, IDynamicQueryableProfile profile) where T : class
         {
             if (clauseValueManager.Skip.HasValue)
             {
@@ -247,7 +247,7 @@ namespace AutoQueryable.Helpers
             return source.Where(Expression.Lambda<Func<T, bool>>(whereExpression, parentEntity));
         }
         // TODO: Handle '-' to orderbydesc (in order that they are in the orderby string)
-        private static IQueryable<T> _addOrderBy<T>(IQueryable<T> source, Dictionary<string, bool> orderClause, IAutoQueryableProfile profile) where T : class
+        private static IQueryable<T> _addOrderBy<T>(IQueryable<T> source, Dictionary<string, bool> orderClause, IDynamicQueryableProfile profile) where T : class
         {
             if (orderClause.Count == 0)
             {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutoQueryable.Sample.Nancy.Entities
+namespace DynamicQueryable.Sample.Nancy.Entities
 {
     public class SalesOrderDetail
     {

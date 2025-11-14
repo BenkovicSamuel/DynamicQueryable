@@ -1,4 +1,4 @@
-﻿namespace AutoQueryable.Core.Enums
+﻿namespace DynamicQueryable.Core.Enums
 {
     public enum ProviderType
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutoQueryable.Core.CriteriaFilters
+namespace DynamicQueryable.Core.CriteriaFilters
 {
     public class QueryableFilter : IQueryableFilter
     {

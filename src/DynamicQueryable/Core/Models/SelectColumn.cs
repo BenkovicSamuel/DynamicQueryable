@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoQueryable.Core.Extensions;
+using DynamicQueryable.Core.Extensions;
 
-namespace AutoQueryable.Core.Models
+namespace DynamicQueryable.Core.Models
 {
     public enum SelectInclusingType
     {
@@ -43,7 +43,7 @@ namespace AutoQueryable.Core.Models
 
 
 
-        public IEnumerable<string> GetRawSelection(IAutoQueryableProfile profile)
+        public IEnumerable<string> GetRawSelection(IDynamicQueryableProfile profile)
         {
             return Type.GetRawSelection(profile, InclusionType);
         }

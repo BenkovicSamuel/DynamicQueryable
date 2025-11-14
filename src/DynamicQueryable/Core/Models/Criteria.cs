@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using AutoQueryable.Core.CriteriaFilters;
+using DynamicQueryable.Core.CriteriaFilters;
 
-namespace AutoQueryable.Core.Models
+namespace DynamicQueryable.Core.Models
 {
     public class Criteria
     { 

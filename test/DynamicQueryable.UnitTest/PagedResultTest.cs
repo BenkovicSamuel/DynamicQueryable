@@ -1,25 +1,25 @@
 ﻿using System.Linq;
-using AutoQueryable.Core.Clauses;
-using AutoQueryable.Core.Clauses.ClauseHandlers;
-using AutoQueryable.Core.CriteriaFilters;
-using AutoQueryable.Core.Models;
-using AutoQueryable.Extensions;
-using AutoQueryable.UnitTest.Mock;
+using DynamicQueryable.Core.Clauses;
+using DynamicQueryable.Core.Clauses.ClauseHandlers;
+using DynamicQueryable.Core.CriteriaFilters;
+using DynamicQueryable.Core.Models;
+using DynamicQueryable.Extensions;
+using DynamicQueryable.UnitTest.Mock;
 using Newtonsoft.Json;
 using Xunit;
 
-namespace AutoQueryable.UnitTest
+namespace DynamicQueryable.UnitTest
 {
     public class PagedResultTest
     {
 
         private readonly SimpleQueryStringAccessor _queryStringAccessor;
-        private readonly IAutoQueryableContext _autoQueryableContext;
+        private readonly IDynamicQueryableContext _autoQueryableContext;
 
         public PagedResultTest()
         {
-            var settings = new AutoQueryableSettings {DefaultToTake = 10};
-            IAutoQueryableProfile profile = new AutoQueryableProfile(settings);
+            var settings = new DynamicQueryableSettings {DefaultToTake = 10};
+            IDynamicQueryableProfile profile = new DynamicQueryableProfile(settings);
             _queryStringAccessor = new SimpleQueryStringAccessor();
             var selectClauseHandler = new DefaultSelectClauseHandler();
             var orderByClauseHandler = new DefaultOrderByClauseHandler();
@@ -27,19 +27,19 @@ namespace AutoQueryable.UnitTest
             var clauseMapManager = new ClauseMapManager(selectClauseHandler, orderByClauseHandler, wrapWithClauseHandler, profile);
             var clauseValueManager = new ClauseValueManager(selectClauseHandler, orderByClauseHandler, wrapWithClauseHandler, profile);
             var criteriaFilterManager = new CriteriaFilterManager();
-            var defaultAutoQueryHandler = new AutoQueryHandler(_queryStringAccessor,criteriaFilterManager ,clauseMapManager ,clauseValueManager, profile);
-            _autoQueryableContext = new AutoQueryableContext(defaultAutoQueryHandler);
+            var defaultDynamicQueryHandler = new DynamicQueryHandler(_queryStringAccessor,criteriaFilterManager ,clauseMapManager ,clauseValueManager, profile);
+            _autoQueryableContext = new DynamicQueryableContext(defaultDynamicQueryHandler);
         }
 
         [Fact]
         public void CountAll()
         {
-            using (var context = new AutoQueryableDbContext())
+            using (var context = new DynamicQueryableDbContext())
             {
                 _queryStringAccessor.SetQueryString("wrapwith=count");
 
                 DataInitializer.InitializeSeed(context);
-                var query = context.Product.AutoQueryable(_autoQueryableContext)  as object;
+                var query = context.Product.DynamicQueryable(_autoQueryableContext)  as object;
 //                var t = JsonConvert.SerializeObject(query);
             }
         }
@@ -47,10 +47,10 @@ namespace AutoQueryable.UnitTest
         //[Fact]
         //public void WrapWithTotalCount()
         //{
-        //    using (var context = new AutoQueryableContext())
+        //    using (var context = new DynamicQueryableContext())
         //    {
         //        DataInitializer.InitializeSeed(context);
-        //        dynamic query = context.Product.AutoQueryable("wrapwith=total-count") as ExpandoObject;
+        //        dynamic query = context.Product.DynamicQueryable("wrapwith=total-count") as ExpandoObject;
         //        var totalCount = query.TotalCount as int?;
         //        totalCount.Should().Be(DataInitializer.ProductSampleCount);
         //    }
@@ -59,10 +59,10 @@ namespace AutoQueryable.UnitTest
         //[Fact]
         //public void NextLinkWithoutSkip()
         //{
-        //    using (var context = new AutoQueryableContext())
+        //    using (var context = new DynamicQueryableContext())
         //    {
         //        DataInitializer.InitializeSeed(context);
-        //        dynamic query = context.Product.AutoQueryable("top=20&wrapwith=next-link") as ExpandoObject;
+        //        dynamic query = context.Product.DynamicQueryable("top=20&wrapwith=next-link") as ExpandoObject;
         //        string nextLink = query.NextLink;
         //        nextLink.Should().Contain("skip=20");
         //    }
@@ -71,10 +71,10 @@ namespace AutoQueryable.UnitTest
         //[Fact]
         //public void NextLinkWithSkip()
         //{
-        //    using (var context = new AutoQueryableContext())
+        //    using (var context = new DynamicQueryableContext())
         //    {
         //        DataInitializer.InitializeSeed(context);
-        //        dynamic query = context.Product.AutoQueryable("top=20&skip=20&wrapwith=next-link") as ExpandoObject;
+        //        dynamic query = context.Product.DynamicQueryable("top=20&skip=20&wrapwith=next-link") as ExpandoObject;
         //        string nextLink = query.NextLink;
         //        nextLink.Should().Contain("skip=40");
         //    }
@@ -83,14 +83,14 @@ namespace AutoQueryable.UnitTest
         //[Fact]
         //public void BrowseProducts20PerPage()
         //{
-        //    using (var context = new AutoQueryableContext())
+        //    using (var context = new DynamicQueryableContext())
         //    {
         //        DataInitializer.InitializeSeed(context);
         //        var nextLink = "top=20&wrapwith=next-link";
         //        var i = 0;
         //        while (!string.IsNullOrEmpty(nextLink))
         //        {
-        //            dynamic query = context.Product.AutoQueryable(nextLink) as ExpandoObject;
+        //            dynamic query = context.Product.DynamicQueryable(nextLink) as ExpandoObject;
         //            var isNextLinkAvailable = ((IDictionary<String, object>)query).ContainsKey("NextLink");
 
         //            if (!isNextLinkAvailable)

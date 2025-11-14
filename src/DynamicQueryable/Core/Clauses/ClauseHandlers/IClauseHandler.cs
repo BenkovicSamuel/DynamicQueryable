@@ -1,10 +1,10 @@
 ﻿using System;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Models;
 
-namespace AutoQueryable.Core.Clauses.ClauseHandlers
+namespace DynamicQueryable.Core.Clauses.ClauseHandlers
 {
     public interface IClauseHandler<T> where T : class 
     {
-        T Handle(string queryStringPart, Type type = default, IAutoQueryableProfile profile = null);
+        T Handle(string queryStringPart, Type type = default, IDynamicQueryableProfile profile = null);
     }
 }

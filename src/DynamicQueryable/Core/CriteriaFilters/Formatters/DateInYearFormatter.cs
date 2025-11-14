@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutoQueryable.Core.CriteriaFilters.Formatters
+namespace DynamicQueryable.Core.CriteriaFilters.Formatters
 {
     public class DateInYearFormatProvider : IFormatProvider
     {

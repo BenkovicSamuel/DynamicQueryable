@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using AutoQueryable.Core.Enums;
+using DynamicQueryable.Core.Enums;
 using Serilog;
 
-namespace AutoQueryable.Core.Models
+namespace DynamicQueryable.Core.Models
 {
-    public interface IAutoQueryableProfile
+    public interface IDynamicQueryableProfile
     {
         ILogger Logger { get; }
         string[] SelectableProperties { get; set; }

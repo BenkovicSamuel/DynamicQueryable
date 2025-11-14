@@ -1,7 +1,7 @@
-﻿using AutoQueryable.Core.Models;
-using AutoQueryable.Core.Models.QueryStringAccessors;
+﻿using DynamicQueryable.Core.Models;
+using DynamicQueryable.Core.Models.QueryStringAccessors;
 
-namespace AutoQueryable.UnitTest.Mock
+namespace DynamicQueryable.UnitTest.Mock
 {
     public class SimpleQueryStringAccessor : BaseQueryStringAccessor
     {

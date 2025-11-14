@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Models;
 
-namespace AutoQueryable.Core.Extensions
+namespace DynamicQueryable.Core.Extensions
 {
     public static class TypeExtensions
     {
@@ -76,7 +76,7 @@ namespace AutoQueryable.Core.Extensions
             return type.GetTypeOrGenericType().GetTypeInfo().IsClass && type != typeof(string);
         }
 
-        public static IEnumerable<string> GetRawSelection(this Type type, IAutoQueryableProfile profile, SelectInclusingType selectInclusingType = SelectInclusingType.IncludeBaseProperties)
+        public static IEnumerable<string> GetRawSelection(this Type type, IDynamicQueryableProfile profile, SelectInclusingType selectInclusingType = SelectInclusingType.IncludeBaseProperties)
         {
             IEnumerable<string> columns = null;
             var isCollection = type.IsEnumerableButNotString();
@@ -119,7 +119,7 @@ namespace AutoQueryable.Core.Extensions
             return columns?.ToList();
         }
         
-        public static ICollection<SelectColumn> GetSelectableColumns(this Type type, IAutoQueryableProfile profile, SelectInclusingType selectInclusingType = SelectInclusingType.IncludeBaseProperties)
+        public static ICollection<SelectColumn> GetSelectableColumns(this Type type, IDynamicQueryableProfile profile, SelectInclusingType selectInclusingType = SelectInclusingType.IncludeBaseProperties)
         {
             IEnumerable<SelectColumn> columns = null;
             var isCollection = type.IsEnumerable();

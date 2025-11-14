@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AutoQueryable.Core.Extensions;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Extensions;
+using DynamicQueryable.Core.Models;
 
-namespace AutoQueryable.Core.Clauses.ClauseHandlers
+namespace DynamicQueryable.Core.Clauses.ClauseHandlers
 {
     public class DefaultSelectClauseHandler : ISelectClauseHandler
     {
@@ -15,9 +15,9 @@ namespace AutoQueryable.Core.Clauses.ClauseHandlers
         private readonly ICollection<SelectColumn> _allSelectColumns = new List<SelectColumn>();
         private readonly ICollection<SelectColumn> _selectColumns = new List<SelectColumn>();
         private Type _baseType = typeof(object);
-        private IAutoQueryableProfile _profile;
+        private IDynamicQueryableProfile _profile;
 
-        public ICollection<SelectColumn> Handle(string selectQueryStringPart, Type type = default, IAutoQueryableProfile profile = null)
+        public ICollection<SelectColumn> Handle(string selectQueryStringPart, Type type = default, IDynamicQueryableProfile profile = null)
         {
             _profile = profile ?? throw new NullReferenceException("The profile has not been set on SelectClauseHandler");
             _baseType = type;
@@ -238,12 +238,12 @@ namespace AutoQueryable.Core.Clauses.ClauseHandlers
     }
     
     
-    public interface IAutoQueryableBaseType 
+    public interface IDynamicQueryableBaseType 
     {
         Type BaseType { get; set; }
     }
 
-    public class AutoQueryableBaseType : IAutoQueryableBaseType
+    public class DynamicQueryableBaseType : IDynamicQueryableBaseType
     {
         public Type BaseType { get; set; }
     }

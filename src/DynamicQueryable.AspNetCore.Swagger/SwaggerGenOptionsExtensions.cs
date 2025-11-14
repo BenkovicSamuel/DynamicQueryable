@@ -1,12 +1,12 @@
 ﻿using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace AutoQueryable.AspNetCore.Swagger
+namespace DynamicQueryable.AspNetCore.Swagger
 {
     public static class SwaggerGenOptionsExtensions
     {
-        public static void AddAutoQueryable(this SwaggerGenOptions swaggerGenOptions)
+        public static void AddDynamicQueryable(this SwaggerGenOptions swaggerGenOptions)
         {
-            swaggerGenOptions.OperationFilter<AutoQueryableOperationFilter>();
+            swaggerGenOptions.OperationFilter<DynamicQueryableOperationFilter>();
         }
     }
 }

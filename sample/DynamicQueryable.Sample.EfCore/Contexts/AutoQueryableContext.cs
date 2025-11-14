@@ -1,11 +1,11 @@
-﻿using AutoQueryable.Sample.EfCore.Entities;
+﻿using DynamicQueryable.Sample.EfCore.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace AutoQueryable.Sample.EfCore.Contexts
+namespace DynamicQueryable.Sample.EfCore.Contexts
 {
-    public class AutoQueryableDbContext : DbContext
+    public class DynamicQueryableDbContext : DbContext
     {
-        public AutoQueryableDbContext(DbContextOptions<AutoQueryableDbContext> options)
+        public DynamicQueryableDbContext(DbContextOptions<DynamicQueryableDbContext> options)
             : base(options)
         {
             

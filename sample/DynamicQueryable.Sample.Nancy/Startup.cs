@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Autofac;
-using AutoQueryable.Sample.Nancy.Contexts;
-using AutoQueryable.Sample.Nancy.Entities;
+using DynamicQueryable.Sample.Nancy.Contexts;
+using DynamicQueryable.Sample.Nancy.Entities;
 using Microsoft.AspNetCore.Builder;
 using Nancy.Owin;
-using AutoQueryable.Core.Models;
-using AutoQueryable.Extensions.TinyIocContainer;
-using AutoQueryable.Nancy.Filter;
+using DynamicQueryable.Core.Models;
+using DynamicQueryable.Extensions.TinyIocContainer;
+using DynamicQueryable.Nancy.Filter;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +19,7 @@ using Nancy.TinyIoc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace AutoQueryable.Sample.Nancy
+namespace DynamicQueryable.Sample.Nancy
 {
     public class Startup
     {
@@ -41,7 +41,7 @@ namespace AutoQueryable.Sample.Nancy
                 options.Bootstrapper = new Bootstrapper(app.ApplicationServices);
             });
 
-            using (var context = new AutoQueryableDbContext()) Seed(context);
+            using (var context = new DynamicQueryableDbContext()) Seed(context);
         }
         
         public class Bootstrapper : DefaultNancyBootstrapper
@@ -62,11 +62,11 @@ namespace AutoQueryable.Sample.Nancy
             {
                 base.ConfigureApplicationContainer(container);
                 container.Register(_serviceProvider.GetService<ILoggerFactory>());
-                container.RegisterAutoQueryable();
+                container.RegisterDynamicQueryable();
             }
         }
         
-        private void Seed(AutoQueryableDbContext context)
+        private void Seed(DynamicQueryableDbContext context)
         {
             var redCategory = new ProductCategory
             {

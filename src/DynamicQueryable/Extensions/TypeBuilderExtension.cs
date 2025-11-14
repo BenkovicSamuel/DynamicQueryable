@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace AutoQueryable.Extensions
+namespace DynamicQueryable.Extensions
 {
     public static class TypeBuilderExtension
     {

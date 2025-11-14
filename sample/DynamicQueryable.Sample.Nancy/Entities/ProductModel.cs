@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AutoQueryable.Sample.Nancy.Entities
+namespace DynamicQueryable.Sample.Nancy.Entities
 {
     public class ProductModel
     {

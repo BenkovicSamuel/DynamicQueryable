@@ -1,21 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AutoQueryable.Core.Aliases;
-using AutoQueryable.Core.Clauses.ClauseHandlers;
-using AutoQueryable.Core.Enums;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Aliases;
+using DynamicQueryable.Core.Clauses.ClauseHandlers;
+using DynamicQueryable.Core.Enums;
+using DynamicQueryable.Core.Models;
 
-namespace AutoQueryable.Core.Clauses
+namespace DynamicQueryable.Core.Clauses
 {
     public class ClauseMapManager : IClauseMapManager
     {
         private readonly ISelectClauseHandler _selectClauseHandler;
         private readonly IOrderByClauseHandler _orderByClauseHandler;
         private readonly IWrapWithClauseHandler _wrapWithClauseHandler;
-        private readonly IAutoQueryableProfile _autoQueryableProfile;
+        private readonly IDynamicQueryableProfile _autoQueryableProfile;
         private readonly ICollection<IClauseQueryFilter> _queryFilters = new List<IClauseQueryFilter>();
 
-        public ClauseMapManager(ISelectClauseHandler selectClauseHandler, IOrderByClauseHandler orderByClauseHandler, IWrapWithClauseHandler wrapWithClauseHandler, IAutoQueryableProfile autoQueryableProfile)
+        public ClauseMapManager(ISelectClauseHandler selectClauseHandler, IOrderByClauseHandler orderByClauseHandler, IWrapWithClauseHandler wrapWithClauseHandler, IDynamicQueryableProfile autoQueryableProfile)
         {
             _selectClauseHandler = selectClauseHandler;
             _orderByClauseHandler = orderByClauseHandler;

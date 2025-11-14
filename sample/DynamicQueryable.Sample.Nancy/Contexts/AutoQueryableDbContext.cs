@@ -1,9 +1,9 @@
-﻿using AutoQueryable.Sample.Nancy.Entities;
+﻿using DynamicQueryable.Sample.Nancy.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace AutoQueryable.Sample.Nancy.Contexts
+namespace DynamicQueryable.Sample.Nancy.Contexts
 {
-    public class AutoQueryableDbContext : DbContext
+    public class DynamicQueryableDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

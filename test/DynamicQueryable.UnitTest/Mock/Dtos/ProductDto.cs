@@ -1,4 +1,4 @@
-﻿namespace AutoQueryable.UnitTest.Mock.Dtos
+﻿namespace DynamicQueryable.UnitTest.Mock.Dtos
 {
     public class ProductDto
     {

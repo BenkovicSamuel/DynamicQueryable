@@ -1,4 +1,4 @@
-﻿namespace AutoQueryable.Sample.Nancy.Dtos
+﻿namespace DynamicQueryable.Sample.Nancy.Dtos
 {
     public class ProductCategoryDto
     {

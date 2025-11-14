@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoQueryable.UnitTest.Mock.Entities
+namespace DynamicQueryable.UnitTest.Mock.Entities
 {
     [ComplexType]
     public class ComplexClass

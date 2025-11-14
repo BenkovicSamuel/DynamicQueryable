@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutoQueryable.UnitTest.Mock.Entities
+namespace DynamicQueryable.UnitTest.Mock.Entities
 {
     public class SalesOrderDetail
     {

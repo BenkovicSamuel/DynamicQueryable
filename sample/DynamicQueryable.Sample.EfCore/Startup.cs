@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using AutoQueryable.AspNetCore.Filter;
-using AutoQueryable.AspNetCore.Filter.FilterAttributes;
-using AutoQueryable.AspNetCore.Swagger;
-using AutoQueryable.Core.Models;
-using AutoQueryable.Extensions.DependencyInjection;
-using AutoQueryable.Sample.EfCore.Contexts;
-using AutoQueryable.Sample.EfCore.Entities;
+using DynamicQueryable.AspNetCore.Filter;
+using DynamicQueryable.AspNetCore.Filter.FilterAttributes;
+using DynamicQueryable.AspNetCore.Swagger;
+using DynamicQueryable.Core.Models;
+using DynamicQueryable.Extensions.DependencyInjection;
+using DynamicQueryable.Sample.EfCore.Contexts;
+using DynamicQueryable.Sample.EfCore.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace AutoQueryable.Sample.EfCore
+namespace DynamicQueryable.Sample.EfCore
 {
     public class Startup
     {
@@ -32,15 +32,15 @@ namespace AutoQueryable.Sample.EfCore
                 .Services
                 .AddSwaggerGen(c =>
                 {
-                    c.AddAutoQueryable();
+                    c.AddDynamicQueryable();
                 })
-                .AddDbContext<AutoQueryableDbContext>(options => options.UseInMemoryDatabase("InMemory"))
-                .AddAutoQueryable(settings => { settings.DefaultToTake = 10; });
+                .AddDbContext<DynamicQueryableDbContext>(options => options.UseInMemoryDatabase("InMemory"))
+                .AddDynamicQueryable(settings => { settings.DefaultToTake = 10; });
         }
         
         public void Configure(IApplicationBuilder app)
         {
-            var context = app.ApplicationServices.GetService<AutoQueryableDbContext>();
+            var context = app.ApplicationServices.GetService<DynamicQueryableDbContext>();
             Seed(context);
 
             app.UseMvc();
@@ -52,7 +52,7 @@ namespace AutoQueryable.Sample.EfCore
             });
         }
 
-        private void Seed(AutoQueryableDbContext context)
+        private void Seed(DynamicQueryableDbContext context)
         {
             var fourthCategory = new ProductCategory
             {

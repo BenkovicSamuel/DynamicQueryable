@@ -1,22 +1,22 @@
 ﻿using System;
 using Autofac;
-using AutoQueryable.Core.Clauses;
-using AutoQueryable.Core.Clauses.ClauseHandlers;
-using AutoQueryable.Core.CriteriaFilters;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Clauses;
+using DynamicQueryable.Core.Clauses.ClauseHandlers;
+using DynamicQueryable.Core.CriteriaFilters;
+using DynamicQueryable.Core.Models;
 
-namespace AutoQueryable.Extensions.Autofac
+namespace DynamicQueryable.Extensions.Autofac
 {
     public static class AspNetAutofacRegistration
     {
-        public static void RegisterAutoQueryable(this ContainerBuilder builder, Action<AutoQueryableSettings> handler = null)
+        public static void RegisterDynamicQueryable(this ContainerBuilder builder, Action<DynamicQueryableSettings> handler = null)
         {
-            var settings = new AutoQueryableSettings();
+            var settings = new DynamicQueryableSettings();
             handler?.Invoke(settings);
-            builder.RegisterType<AutoQueryableContext>().AsImplementedInterfaces().InstancePerLifetimeScope();
-            builder.Register(c => settings).As<AutoQueryableSettings>().SingleInstance();
-            builder.RegisterType<AutoQueryableProfile>().AsImplementedInterfaces().InstancePerLifetimeScope();
-            builder.RegisterType<AutoQueryHandler>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<DynamicQueryableContext>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.Register(c => settings).As<DynamicQueryableSettings>().SingleInstance();
+            builder.RegisterType<DynamicQueryableProfile>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<DynamicQueryHandler>().AsImplementedInterfaces().InstancePerLifetimeScope();
             builder.RegisterType<ClauseValueManager>().AsImplementedInterfaces().InstancePerLifetimeScope();
             builder.RegisterType<CriteriaFilterManager>().AsImplementedInterfaces().InstancePerLifetimeScope();
             builder.RegisterType<ClauseMapManager>().AsImplementedInterfaces().InstancePerLifetimeScope();

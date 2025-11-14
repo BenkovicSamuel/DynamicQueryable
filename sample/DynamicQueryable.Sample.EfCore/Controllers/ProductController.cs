@@ -1,24 +1,24 @@
 ﻿using System.Linq;
-using AutoQueryable.AspNetCore.Filter.FilterAttributes;
-using AutoQueryable.AspNetCore.Swagger;
-using AutoQueryable.Core.Enums;
-using AutoQueryable.Core.Models;
-using AutoQueryable.Extensions;
-using AutoQueryable.Sample.EfCore.Contexts;
-using AutoQueryable.Sample.EfCore.Dtos;
-using AutoQueryable.Sample.EfCore.Entities;
+using DynamicQueryable.AspNetCore.Filter.FilterAttributes;
+using DynamicQueryable.AspNetCore.Swagger;
+using DynamicQueryable.Core.Enums;
+using DynamicQueryable.Core.Models;
+using DynamicQueryable.Extensions;
+using DynamicQueryable.Sample.EfCore.Contexts;
+using DynamicQueryable.Sample.EfCore.Dtos;
+using DynamicQueryable.Sample.EfCore.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace AutoQueryable.Sample.EfCore.Controllers
+namespace DynamicQueryable.Sample.EfCore.Controllers
 {
     [Route("api/products")]
     public class ProductController : ControllerBase
     {
-        private readonly IAutoQueryableContext _autoQueryableContext;
-        private readonly IAutoQueryableProfile _profile;
+        private readonly IDynamicQueryableContext _autoQueryableContext;
+        private readonly IDynamicQueryableProfile _profile;
 
-        public ProductController(IAutoQueryableContext autoQueryableContext, IAutoQueryableProfile profile)
+        public ProductController(IDynamicQueryableContext autoQueryableContext, IDynamicQueryableProfile profile)
         {
             _autoQueryableContext = autoQueryableContext;
             _profile = profile;
@@ -31,24 +31,24 @@ namespace AutoQueryable.Sample.EfCore.Controllers
         /// <param name="context"></param>
         /// <returns></returns>
         
-        [AutoQueryable]
+        [DynamicQueryable]
         [HttpGet]
-        public IQueryable Get([FromServices] AutoQueryableDbContext context)
+        public IQueryable Get([FromServices] DynamicQueryableDbContext context)
         {
             return context.Product;
         }
         
-        [AutoQueryable(DisAllowedClauses = ClauseType.Select)]
+        [DynamicQueryable(DisAllowedClauses = ClauseType.Select)]
         [HttpGet("with_disallow")]
-        public IQueryable GetWithDisallow([FromServices] AutoQueryableDbContext context)
+        public IQueryable GetWithDisallow([FromServices] DynamicQueryableDbContext context)
         {
             return context.Product;
         }
         
         
-        [AutoQueryable(DefaultToSelect = "name")]
+        [DynamicQueryable(DefaultToSelect = "name")]
         [HttpGet("with_default")]
-        public IQueryable GetWithDefault([FromServices] AutoQueryableDbContext context)
+        public IQueryable GetWithDefault([FromServices] DynamicQueryableDbContext context)
         {
             return context.Product;
         }
@@ -59,9 +59,9 @@ namespace AutoQueryable.Sample.EfCore.Controllers
         /// <example>http://localhost:5000/api/products/with_dto_projection?select=name,category.name</example>
         /// <param name="context"></param>
         /// <returns></returns>
-        //[AutoQueryable]
+        //[DynamicQueryable]
         [HttpGet("with_dto_projection")]
-        public IQueryable GetWithDtoProjection([FromServices] AutoQueryableDbContext context)
+        public IQueryable GetWithDtoProjection([FromServices] DynamicQueryableDbContext context)
         {
             return context.Product.Select(p => new ProductDto
             {
@@ -74,8 +74,8 @@ namespace AutoQueryable.Sample.EfCore.Controllers
         }
         
         [HttpGet("swagger_without_aq_attr")]
-        [AutoQueryableSwagger]
-        public IQueryable GetSwaggerWithoutAqAttr([FromServices] AutoQueryableDbContext context)
+        [DynamicQueryableSwagger]
+        public IQueryable GetSwaggerWithoutAqAttr([FromServices] DynamicQueryableDbContext context)
         {
             return context.Product.Select(p => new ProductDto
             {
@@ -84,7 +84,7 @@ namespace AutoQueryable.Sample.EfCore.Controllers
                 {
                     Name = p.ProductCategory.Name
                 }
-            }).AutoQueryable(_autoQueryableContext);
+            }).DynamicQueryable(_autoQueryableContext);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace AutoQueryable.Sample.EfCore.Controllers
         /// <param name="context"></param>
         /// <returns></returns>
         [HttpGet("disallow")]
-        public dynamic GetWithNotAllowedClauses([FromServices] AutoQueryableDbContext context)
+        public dynamic GetWithNotAllowedClauses([FromServices] DynamicQueryableDbContext context)
         {
            _profile.AllowedClauses = ClauseType.Select | ClauseType.Skip | ClauseType.OrderBy | ClauseType.OrderByDesc | ClauseType.WrapWith | ClauseType.Filter;
             _profile.MaxToTake = 5;
@@ -104,7 +104,7 @@ namespace AutoQueryable.Sample.EfCore.Controllers
 //                SortableProperties = new []{"color"},
 //                AllowedWrapperPartType = WrapperPartType.Count
 //            };
-            return context.Product.AutoQueryable(_autoQueryableContext);
+            return context.Product.DynamicQueryable(_autoQueryableContext);
         }
     }
 }

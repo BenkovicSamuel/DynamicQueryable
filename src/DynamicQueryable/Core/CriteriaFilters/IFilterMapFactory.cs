@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AutoQueryable.Core.CriteriaFilters
+namespace DynamicQueryable.Core.CriteriaFilters
 {
     public interface IReZisFilterMapFactory
     {

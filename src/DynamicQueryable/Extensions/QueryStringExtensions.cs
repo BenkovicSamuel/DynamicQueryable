@@ -1,4 +1,4 @@
-﻿namespace AutoQueryable.Extensions
+﻿namespace DynamicQueryable.Extensions
 {
     public static class QueryStringExtensions
     {

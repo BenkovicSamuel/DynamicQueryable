@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using AutoQueryable.Core.Enums;
+using DynamicQueryable.Core.Enums;
 
-namespace AutoQueryable.Core.Models
+namespace DynamicQueryable.Core.Models
 {
-    public class AutoQueryableSettings
+    public class DynamicQueryableSettings
     {
         public string[] SelectableProperties { get; set; }
         public string[] SortableProperties { get; set; }

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Models;
 
-namespace AutoQueryable.Core.Clauses
+namespace DynamicQueryable.Core.Clauses
 {
     public interface IClauseValueManager
     {

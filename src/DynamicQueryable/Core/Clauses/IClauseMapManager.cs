@@ -1,6 +1,6 @@
-﻿using AutoQueryable.Core.Enums;
+﻿using DynamicQueryable.Core.Enums;
 
-namespace AutoQueryable.Core.Clauses
+namespace DynamicQueryable.Core.Clauses
 {
     public interface IClauseMapManager
     {

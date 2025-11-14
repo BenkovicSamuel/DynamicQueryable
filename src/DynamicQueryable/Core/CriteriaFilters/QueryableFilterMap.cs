@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoQueryable.Core.Aliases;
-using AutoQueryable.Core.CriteriaFilters.Formatters;
+using DynamicQueryable.Core.Aliases;
+using DynamicQueryable.Core.CriteriaFilters.Formatters;
 
-namespace AutoQueryable.Core.CriteriaFilters
+namespace DynamicQueryable.Core.CriteriaFilters
 {
     public class QueryableFilterMap : IQueryableFilterMap
     {

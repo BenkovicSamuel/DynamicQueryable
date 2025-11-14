@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace AutoQueryable.Sample.Nancy
+namespace DynamicQueryable.Sample.Nancy
 {
     public class Program
     {

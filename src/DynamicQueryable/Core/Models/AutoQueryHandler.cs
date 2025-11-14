@@ -4,26 +4,26 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using AutoQueryable.Core.Clauses;
-using AutoQueryable.Core.CriteriaFilters;
-using AutoQueryable.Core.Enums;
-using AutoQueryable.Helpers;
+using DynamicQueryable.Core.Clauses;
+using DynamicQueryable.Core.CriteriaFilters;
+using DynamicQueryable.Core.Enums;
+using DynamicQueryable.Helpers;
 
-namespace AutoQueryable.Core.Models
+namespace DynamicQueryable.Core.Models
 {
-    public class AutoQueryHandler : IAutoQueryHandler
+    public class DynamicQueryHandler : IDynamicQueryHandler
     {
         private readonly IQueryStringAccessor _queryStringAccessor;
         private readonly ICriteriaFilterManager _criteriaFilterManager;
         private readonly IClauseMapManager _clauseMapManager;
         private readonly IClauseValueManager _clauseValueManager;
-        private readonly IAutoQueryableProfile _profile;
+        private readonly IDynamicQueryableProfile _profile;
         public IClauseValueManager ClauseValueManager { get; private set; }
         public IQueryable<dynamic> TotalCountQuery { get; private set; }
         public string QueryString { get; private set; }
 
 
-        public AutoQueryHandler(IQueryStringAccessor queryStringAccessor, ICriteriaFilterManager criteriaFilterManager, IClauseMapManager clauseMapManager, IClauseValueManager clauseValueManager, IAutoQueryableProfile profile)
+        public DynamicQueryHandler(IQueryStringAccessor queryStringAccessor, ICriteriaFilterManager criteriaFilterManager, IClauseMapManager clauseMapManager, IClauseValueManager clauseValueManager, IDynamicQueryableProfile profile)
         {
             _queryStringAccessor = queryStringAccessor;
             _criteriaFilterManager = criteriaFilterManager;
@@ -32,7 +32,7 @@ namespace AutoQueryable.Core.Models
             _profile = profile;
         }
 
-        public dynamic GetAutoQuery<T>(IQueryable<T> query) where T : class
+        public dynamic GetDynamicQuery<T>(IQueryable<T> query) where T : class
         {
             QueryString = _queryStringAccessor.QueryString;
             ClauseValueManager = _clauseValueManager;

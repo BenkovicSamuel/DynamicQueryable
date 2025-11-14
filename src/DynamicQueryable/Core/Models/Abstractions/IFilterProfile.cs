@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using AutoQueryable.Core.Enums;
+using DynamicQueryable.Core.Enums;
 
-namespace AutoQueryable.Core.Models.Abstractions
+namespace DynamicQueryable.Core.Models.Abstractions
 {
     public interface IFilterProfile
     {

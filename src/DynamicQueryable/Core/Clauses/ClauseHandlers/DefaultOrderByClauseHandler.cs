@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using AutoQueryable.Core.Models;
+using DynamicQueryable.Core.Models;
 
-namespace AutoQueryable.Core.Clauses.ClauseHandlers
+namespace DynamicQueryable.Core.Clauses.ClauseHandlers
 {
     public class DefaultOrderByClauseHandler : IOrderByClauseHandler
     {
-        public Dictionary<string, bool> Handle(string orderByQueryStringPart, Type type = default, IAutoQueryableProfile profile = null)
+        public Dictionary<string, bool> Handle(string orderByQueryStringPart, Type type = default, IDynamicQueryableProfile profile = null)
         {
             var orderByValues = new Dictionary<string, bool>();
             foreach(var q in orderByQueryStringPart.Split(','))

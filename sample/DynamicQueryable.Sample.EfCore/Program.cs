@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace AutoQueryable.Sample.EfCore
+namespace DynamicQueryable.Sample.EfCore
 {
     public class Program
     {

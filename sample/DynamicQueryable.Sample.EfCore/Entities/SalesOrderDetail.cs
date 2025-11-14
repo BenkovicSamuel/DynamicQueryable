@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutoQueryable.Sample.EfCore.Entities
+namespace DynamicQueryable.Sample.EfCore.Entities
 {
     public class SalesOrderDetail
     {

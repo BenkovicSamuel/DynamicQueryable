@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Reflection;
 
-namespace AutoQueryable.Helpers
+namespace DynamicQueryable.Helpers
 {
     public static class ConvertHelper
     {

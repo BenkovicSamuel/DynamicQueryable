@@ -1,6 +1,6 @@
-﻿using AutoQueryable.Core.Models.QueryStringAccessors;
+﻿using DynamicQueryable.Core.Models.QueryStringAccessors;
 
-namespace AutoQueryable.Core.Models
+namespace DynamicQueryable.Core.Models
 {
     public class TestQueryStringAccessor : BaseQueryStringAccessor
     {

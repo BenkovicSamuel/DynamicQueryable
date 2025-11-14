@@ -1,4 +1,4 @@
-﻿namespace AutoQueryable.UnitTest.Mock.Entities
+﻿namespace DynamicQueryable.UnitTest.Mock.Entities
 {
     public class ProductExtension
     {

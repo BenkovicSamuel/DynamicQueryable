@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using AutoQueryable.Core.Enums;
+using DynamicQueryable.Core.Enums;
 using Serilog;
 
-namespace AutoQueryable.Core.Models
+namespace DynamicQueryable.Core.Models
 {
-    public class AutoQueryableProfile : IAutoQueryableProfile
+    public class DynamicQueryableProfile : IDynamicQueryableProfile
     {
-        public AutoQueryableProfile(AutoQueryableSettings settings)
+        public DynamicQueryableProfile(DynamicQueryableSettings settings)
         {
             SelectableProperties = settings.SelectableProperties;
             UnselectableProperties = settings.UnselectableProperties;

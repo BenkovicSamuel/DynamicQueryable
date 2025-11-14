@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutoQueryable.Core.Enums
+namespace DynamicQueryable.Core.Enums
 {
     [Flags]
     public enum ClauseType

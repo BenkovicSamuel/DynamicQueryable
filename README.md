@@ -1,6 +1,6 @@
-# AutoQueryable &middot; [![NuGet](https://img.shields.io/nuget/vpre/AutoQueryable.svg?style=flat-square)](https://www.nuget.org/packages/AutoQueryable) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/trenoncourt/AutoQueryable/blob/master/LICENSE) [![Donate](	https://img.shields.io/badge/Donate-PayPal-green.svg?style=flat-square)](https://www.paypal.me/trenoncourt/5)
+# DynamicQueryable &middot; [![NuGet](https://img.shields.io/nuget/vpre/DynamicQueryable.svg?style=flat-square)](https://www.nuget.org/packages/DynamicQueryable) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/trenoncourt/DynamicQueryable/blob/master/LICENSE) [![Donate](	https://img.shields.io/badge/Donate-PayPal-green.svg?style=flat-square)](https://www.paypal.me/trenoncourt/5)
 
-> AutoQueryable add auto querying functionality like OData on top of IQueryable with best url practices. It help you to make requests like [http://baseurl/api/products?nameContains=frame&color=red,black](http://baseurl/api/products?nameContains=frame&color=red,black) with no effort.
+> DynamicQueryable add auto querying functionality like OData on top of IQueryable with best url practices. It help you to make requests like [http://baseurl/api/products?nameContains=frame&color=red,black](http://baseurl/api/products?nameContains=frame&color=red,black) with no effort.
 
 
 With this url: [**/products?select=productId,name,color,productCategory.name,salesOrderDetail,salesOrderDetail.product**](/products?top=1&select=productId,name,color,productCategory.name,salesOrderDetail,salesOrderDetail.product)
@@ -42,16 +42,16 @@ You will get result like:
 
 | Package        | NuGet                                                                                     | |
 |----------------|-------------------------------------------------------------------------------------------|-|
-| Install-Package AutoQueryable   | [![NuGet Downloads](https://img.shields.io/nuget/dt/AutoQueryable.svg?style=flat-square)](https://www.nuget.org/packages/AutoQueryable) | Install without filters |
-| AutoQueryable.AspNetCore.Filter | [![Nuget Downloads](https://img.shields.io/nuget/dt/AutoQueryable.AspNetCore.Filter.svg?style=flat-square)](https://www.nuget.org/packages/AutoQueryable.AspNetCore.Filter) | Install for **AspNet Core** |
-| AutoQueryable.AspNetCore.Swagger      | [![Nuget Downloads](https://img.shields.io/nuget/dt/AutoQueryable.AspNetCore.Swagger.svg?style=flat-square)](https://www.nuget.org/packages/AutoQueryable.AspNetCore.Swagger) | Install for **AspNet Core** |
-| AutoQueryable.Extensions.DependencyInjection      | [![Nuget Downloads](https://img.shields.io/nuget/dt/AutoQueryable.Extensions.DependencyInjection.svg?style=flat-square)](https://www.nuget.org/packages/AutoQueryable.Extensions.DependencyInjection) | Install for **AspNet Core** |
-| AutoQueryable.AspNet.Filter     | [![Nuget Downloads](https://img.shields.io/nuget/dt/AutoQueryable.AspNet.Filter.svg?style=flat-square)](https://www.nuget.org/packages/AutoQueryable.AspNet.Filter) | Install for **Web api 2** |
-| AutoQueryable.AspNet     | [![Nuget Downloads](https://img.shields.io/nuget/dt/AutoQueryable.AspNet.svg?style=flat-square)](https://www.nuget.org/packages/AutoQueryable.AspNet) | Install for **Web api 2** |
-| AutoQueryable.Extensions.Autofac     | [![Nuget Downloads](https://img.shields.io/nuget/dt/AutoQueryable.Extensions.Autofac.svg?style=flat-square)](https://www.nuget.org/packages/AutoQueryable.Extensions.Autofac) | Install for **Web api 2** |
-| AutoQueryable.Nancy.Filter (old version)      | [![Nuget Downloads](https://img.shields.io/nuget/dt/AutoQueryable.Nancy.Filter.svg?style=flat-square)](https://www.nuget.org/packages/AutoQueryable.Nancy.Filter) | Install for **Nancy** |
+| Install-Package DynamicQueryable   | [![NuGet Downloads](https://img.shields.io/nuget/dt/DynamicQueryable.svg?style=flat-square)](https://www.nuget.org/packages/DynamicQueryable) | Install without filters |
+| DynamicQueryable.AspNetCore.Filter | [![Nuget Downloads](https://img.shields.io/nuget/dt/DynamicQueryable.AspNetCore.Filter.svg?style=flat-square)](https://www.nuget.org/packages/DynamicQueryable.AspNetCore.Filter) | Install for **AspNet Core** |
+| DynamicQueryable.AspNetCore.Swagger      | [![Nuget Downloads](https://img.shields.io/nuget/dt/DynamicQueryable.AspNetCore.Swagger.svg?style=flat-square)](https://www.nuget.org/packages/DynamicQueryable.AspNetCore.Swagger) | Install for **AspNet Core** |
+| DynamicQueryable.Extensions.DependencyInjection      | [![Nuget Downloads](https://img.shields.io/nuget/dt/DynamicQueryable.Extensions.DependencyInjection.svg?style=flat-square)](https://www.nuget.org/packages/DynamicQueryable.Extensions.DependencyInjection) | Install for **AspNet Core** |
+| DynamicQueryable.AspNet.Filter     | [![Nuget Downloads](https://img.shields.io/nuget/dt/DynamicQueryable.AspNet.Filter.svg?style=flat-square)](https://www.nuget.org/packages/DynamicQueryable.AspNet.Filter) | Install for **Web api 2** |
+| DynamicQueryable.AspNet     | [![Nuget Downloads](https://img.shields.io/nuget/dt/DynamicQueryable.AspNet.svg?style=flat-square)](https://www.nuget.org/packages/DynamicQueryable.AspNet) | Install for **Web api 2** |
+| DynamicQueryable.Extensions.Autofac     | [![Nuget Downloads](https://img.shields.io/nuget/dt/DynamicQueryable.Extensions.Autofac.svg?style=flat-square)](https://www.nuget.org/packages/DynamicQueryable.Extensions.Autofac) | Install for **Web api 2** |
+| DynamicQueryable.Nancy.Filter (old version)      | [![Nuget Downloads](https://img.shields.io/nuget/dt/DynamicQueryable.Nancy.Filter.svg?style=flat-square)](https://www.nuget.org/packages/DynamicQueryable.Nancy.Filter) | Install for **Nancy** |
 
-**Other web framework?** You could made your own attribute, see **Use AutoQueryable without attribute** section.
+**Other web framework?** You could made your own attribute, see **Use DynamicQueryable without attribute** section.
 
 ## Getting started
 
@@ -59,52 +59,52 @@ You will get result like:
 
 #### For ASP.NET Core
 
-Install the DI package: `AutoQueryable.Extensions.DependencyInjection` and register AutoQueryable dependencies with your favorite DI framework
+Install the DI package: `DynamicQueryable.Extensions.DependencyInjection` and register DynamicQueryable dependencies with your favorite DI framework
 
 ```c#
 public void ConfigureServices(IServiceCollection services)
 {
     ...
-    services.AddAutoQueryable();
+    services.AddDynamicQueryable();
 }
 ```
 
 #### For ASP.NET Framework
 
-Install the DI package: `AutoQueryable.Extensions.Autofac` and register AutoQueryable dependencies
+Install the DI package: `DynamicQueryable.Extensions.Autofac` and register DynamicQueryable dependencies
 
 ```c#
 protected void Application_Start()
 {
     var builder = new ContainerBuilder();
     ...
-    builder.RegisterAutoQueryable();
+    builder.RegisterDynamicQueryable();
     GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(builder.Build())
 }
 ```
 
 ### 2. Default settings configuration
 
-you can configure the default AutoQueryable settings. For example get only 10 results :
+you can configure the default DynamicQueryable settings. For example get only 10 results :
 
 #### For ASP.NET Core
 
 ```c#
-services.AddAutoQueryable(settings => settings.DefaultToTake = 10)
+services.AddDynamicQueryable(settings => settings.DefaultToTake = 10)
 ```
 
 #### For ASP.NET Framework
 
 ```c#
-builder.RegisterAutoQueryable(settings => settings.DefaultToTake = 10);
+builder.RegisterDynamicQueryable(settings => settings.DefaultToTake = 10);
 ```
 
-### 3. Use AutoQueryable
+### 3. Use DynamicQueryable
 
-Ensure your API actions are decorated with AutoQueryable attribute and let the magic begin.
+Ensure your API actions are decorated with DynamicQueryable attribute and let the magic begin.
 
 ```c#
-[HttpGet, AutoQueryable]
+[HttpGet, DynamicQueryable]
 public IQueryable<Product> Get([FromServices] MyDbContext dbContext)
 {
     return dbContext.Product;
@@ -113,11 +113,11 @@ public IQueryable<Product> Get([FromServices] MyDbContext dbContext)
 
 AQ settings can be overriden in attribute too
 ```c#
-[AutoQueryable(DefaultToTake = 50, UnselectableProperties = new [] {"Id", "Password"})]
+[DynamicQueryable(DefaultToTake = 50, UnselectableProperties = new [] {"Id", "Password"})]
 ...
 ```
 
-*Note that you can use AQ without attribute, see `Use AutoQueryable without attribute` section*
+*Note that you can use AQ without attribute, see `Use DynamicQueryable without attribute` section*
 
 ## Api URL usage
 
@@ -154,7 +154,7 @@ You can use projection in select & filters clauses with navigation properties (o
 You can still use dto projection and query over your dto with defined type:
 ```c#
 [HttpGet]
-[AutoQueryable]
+[DynamicQueryable]
 public IQueryable Get([FromServices] AdventureWorksContext adventureWorksContext)
 {
     return adventureWorksContext.Product.Select(p => new ProductProjection
@@ -169,7 +169,7 @@ public IQueryable Get([FromServices] AdventureWorksContext adventureWorksContext
 Or anonymous type:
 ```c#
 [HttpGet]
-[AutoQueryable]
+[DynamicQueryable]
 public IQueryable Get([FromServices] AdventureWorksContext adventureWorksContext)
 {
     return adventureWorksContext.Product.Select(p => new
@@ -189,7 +189,7 @@ If you want some properties to be unselectable (eg: Id, Password, ...)
 public class UsersController : Controller
 {
     [HttpGet]
-    [AutoQueryable(UnselectableProperties = new []{ "Password", "Id" })]
+    [DynamicQueryable(UnselectableProperties = new []{ "Password", "Id" })]
     public IQueryable<User> Get([FromServices] myDbContext dbContext)
     {
         return dbContext.User;
@@ -244,7 +244,7 @@ AQ uses dynamic types per default to ensure that the final flow will be as small
 public class UsersController : Controller
 {
     [HttpGet]
-    [AutoQueryable(UseBaseType = true)]
+    [DynamicQueryable(UseBaseType = true)]
     public IQueryable<User> Get([FromServices] myDbContext dbContext)
     {
         return dbContext.User;
@@ -254,13 +254,13 @@ public class UsersController : Controller
 
 *Note that final flow will include null and default values but you can escape them with serializer settings for exemple*
 
-## Use AutoQueryable without attribute 
+## Use DynamicQueryable without attribute 
 
 If you don't want to use autoqueryable attribute you could use AQ directry in your code by passing it the querystring. 
 First install the Autoqueryable package
 
 ```powershell
-Install-Package AutoQueryable
+Install-Package DynamicQueryable
 ```
 
 ```c#
@@ -270,7 +270,7 @@ public class UsersController
     [HttpGet]
     public IActionResult Get([FromServices] myDbContext dbContext)
     {
-        var resultSet = dbContext.Product.Select(p => new { ... }).AutoQueryable(queryString);
+        var resultSet = dbContext.Product.Select(p => new { ... }).DynamicQueryable(queryString);
         return new OkObjectResult(new {
             foo = "",
             ....,
@@ -284,26 +284,26 @@ public class UsersController
 
 ### Add Swagger parameters
 
-If you want to add AQ parameters to your swagger docs, just add AutoQueryable to the swagger conf.
+If you want to add AQ parameters to your swagger docs, just add DynamicQueryable to the swagger conf.
 
 ```powershell
-Install-Package AutoQueryable.AspNetCore.Swagger
+Install-Package DynamicQueryable.AspNetCore.Swagger
 ```
 
 ```c#
 services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-    c.AddAutoQueryable(); // add this line
+    c.AddDynamicQueryable(); // add this line
 });
 ```
 
 ### Add parameters without AQ attribute
 
-If you're using AQ without attribute `.AutoQueryable(queryString)` and want swagger parameters, you can add `AutoQueryableSwagger` attribute
+If you're using AQ without attribute `.DynamicQueryable(queryString)` and want swagger parameters, you can add `DynamicQueryableSwagger` attribute
 
 ```c#
-[AutoQueryableSwagger]
+[DynamicQueryableSwagger]
 ```
 
 ## AutoMapper
@@ -330,7 +330,7 @@ with
 
 ### Map relations
 
-AutoQueryable and AutoMapper do not work together when it comes to mapping entity relations from an Entity to a Dto. To fix this, use the AutoQueryable profile setting
+DynamicQueryable and AutoMapper do not work together when it comes to mapping entity relations from an Entity to a Dto. To fix this, use the DynamicQueryable profile setting
 
 ```c#
 profile.ToListBeforeSelect = true

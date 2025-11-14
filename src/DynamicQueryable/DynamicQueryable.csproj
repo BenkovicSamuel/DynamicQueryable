@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>DynamicQueryable add auto querying functionality like OData with best url practices to Asp.Net Core.</Description>
+    <AssemblyTitle>DynamicQueryable add auto querying functionality like OData with best url practices to Asp.Net Core.</AssemblyTitle>
+    <Version>5.0.11</Version>
+    <Authors>Thibaut Renoncourt, Nils Goovaerts</Authors>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>DynamicQueryable</AssemblyName>
+    <PackageId>DynamicQueryable</PackageId>
+    <PackageTags>DynamicQueryable;AutoQuery;OData</PackageTags>
+    <PackageProjectUrl>https://github.com/trenoncourt/DynamicQueryable</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/trenoncourt/DynamicQueryable/master/LICENSE</PackageLicenseUrl>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <LangVersion>7.1</LangVersion>
+    <RepositoryUrl>https://github.com/trenoncourt/DynamicQueryable</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath></OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
+    <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
+  </ItemGroup>
+</Project>

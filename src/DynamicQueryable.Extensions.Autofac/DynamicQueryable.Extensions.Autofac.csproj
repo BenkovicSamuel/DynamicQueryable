@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Version>5.0.2</Version>
+    <Authors>Thibaut Renoncourt</Authors>
+    <Company>-</Company>
+    <Product>DynamicQueryable</Product>
+    <Description>DynamicQueryable add auto querying functionality like OData with best url practices to Asp.Net Core.</Description>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/trenoncourt/DynamicQueryable/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/trenoncourt/DynamicQueryable</PackageProjectUrl>
+    <PackageTags>DynamicQueryable;AutoQuery;OData</PackageTags>
+    <RepositoryUrl>https://github.com/trenoncourt/DynamicQueryable</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DynamicQueryable\DynamicQueryable.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.2.0" />
+  </ItemGroup>
+</Project>

@@ -18,12 +18,12 @@ namespace DynamicQueryable.UnitTest
     {
         private readonly SimpleQueryStringAccessor _queryStringAccessor;
         private readonly IDynamicQueryableProfile _profile;
-  private readonly IDynamicQueryableContext _dynamicQueryableContext;
+        private readonly IDynamicQueryableContext _dynamicQueryableContext;
 
- public DynamicQueryableProfileTest()
+        public DynamicQueryableProfileTest()
         {
-   var settings = new DynamicQueryableSettings {DefaultToTake = 10};
-    _profile = new DynamicQueryableProfile(settings);
+            var settings = new DynamicQueryableSettings { DefaultToTake = 10 };
+            _profile = new DynamicQueryableProfile(settings);
             _queryStringAccessor = new SimpleQueryStringAccessor();
             var selectClauseHandler = new DefaultSelectClauseHandler();
             var orderByClauseHandler = new DefaultOrderByClauseHandler();
@@ -31,21 +31,21 @@ namespace DynamicQueryable.UnitTest
             var clauseMapManager = new ClauseMapManager(selectClauseHandler, orderByClauseHandler, wrapWithClauseHandler, _profile);
             var clauseValueManager = new ClauseValueManager(selectClauseHandler, orderByClauseHandler, wrapWithClauseHandler, _profile);
             var criteriaFilterManager = new CriteriaFilterManager();
-         var defaultDynamicQueryHandler = new DynamicQueryHandler(_queryStringAccessor,criteriaFilterManager ,clauseMapManager ,clauseValueManager, _profile);
-    _dynamicQueryableContext = new DynamicQueryableContext(defaultDynamicQueryHandler);
+            var defaultDynamicQueryHandler = new DynamicQueryHandler(_queryStringAccessor, criteriaFilterManager, clauseMapManager, clauseValueManager, _profile);
+            _dynamicQueryableContext = new DynamicQueryableContext(defaultDynamicQueryHandler);
         }
 
         [Fact]
         public void AllowOnlyOneClause()
         {
             using (var context = new DynamicQueryableDbContext())
-        {
-         DataInitializer.InitializeSeed(context);
+            {
+                DataInitializer.InitializeSeed(context);
                 _queryStringAccessor.SetQueryString("select=productId");
 
-          _profile.AllowedClauses = ClauseType.Select;
+                _profile.AllowedClauses = ClauseType.Select;
 
-        var query = context.Product.DynamicQueryable(_dynamicQueryableContext) as IQueryable<object>;
+                var query = context.Product.DynamicQueryable(_dynamicQueryableContext) as IQueryable<object>;
 
 
                 query.Count().Should().Be(DataInitializer.DefaultToTakeCount);
@@ -62,12 +62,12 @@ namespace DynamicQueryable.UnitTest
         [Fact]
         public void AllowMultipleClauses()
         {
-         using (var context = new DynamicQueryableDbContext())
-   {
- DataInitializer.InitializeSeed(context);
+            using (var context = new DynamicQueryableDbContext())
+            {
+                DataInitializer.InitializeSeed(context);
 
-        _queryStringAccessor.SetQueryString("select=productId&top=10&skip=100");
-    _profile.AllowedClauses = ClauseType.Select | ClauseType.Top;
+                _queryStringAccessor.SetQueryString("select=productId&top=10&skip=100");
+                _profile.AllowedClauses = ClauseType.Select | ClauseType.Top;
 
                 var query = context.Product.DynamicQueryable(_dynamicQueryableContext) as IQueryable<object>;
 
@@ -85,20 +85,20 @@ namespace DynamicQueryable.UnitTest
         [Fact]
         public void AllowCaseInsensitiveClauses()
         {
-      using (var context = new DynamicQueryableDbContext())
+            using (var context = new DynamicQueryableDbContext())
             {
-          DataInitializer.InitializeSeed(context);
+                DataInitializer.InitializeSeed(context);
 
                 var dynamicQueryableContext = PrepareDynamicQuery(_queryStringAccessor);
-    _queryStringAccessor.SetQueryString($"NameContains:i=MyspecialProduct&Select=*");
+                _queryStringAccessor.SetQueryString($"NameContains:i=MyspecialProduct&Select=*");
 
-            _profile.AllowedClauses = ClauseType.OrderBy | ClauseType.OrderByDesc | ClauseType.Filter | ClauseType.Select | ClauseType.WrapWith;
+                _profile.AllowedClauses = ClauseType.OrderBy | ClauseType.OrderByDesc | ClauseType.Filter | ClauseType.Select | ClauseType.WrapWith;
 
-          var query = context.Product.DynamicQueryable(_dynamicQueryableContext) as IQueryable<object>;
+                var query = context.Product.DynamicQueryable(_dynamicQueryableContext) as IQueryable<object>;
 
                 query.Count().Should().Be(2);
                 var first = query.First();
-                
+
                 var productid = first.GetType().GetProperty("ProductId").GetValue(first);
                 productid.Should().Be(1001);
             }
@@ -107,16 +107,16 @@ namespace DynamicQueryable.UnitTest
         [Fact]
         public void AllowCaseSpecialClauses()
         {
-       using (var context = new DynamicQueryableDbContext())
-          {
-DataInitializer.InitializeSeed(context);
+            using (var context = new DynamicQueryableDbContext())
+            {
+                DataInitializer.InitializeSeed(context);
 
-      var dynamicQueryableContext = PrepareDynamicQuery(_queryStringAccessor);
-     _queryStringAccessor.SetQueryString($"NameContains:i=1,3&Select=*");
+                var dynamicQueryableContext = PrepareDynamicQuery(_queryStringAccessor);
+                _queryStringAccessor.SetQueryString($"NameContains:i=1,3&Select=*");
 
-     _profile.AllowedClauses = ClauseType.OrderBy | ClauseType.OrderByDesc | ClauseType.Filter | ClauseType.Select | ClauseType.WrapWith;
+                _profile.AllowedClauses = ClauseType.OrderBy | ClauseType.OrderByDesc | ClauseType.Filter | ClauseType.Select | ClauseType.WrapWith;
 
-        var query = context.Product.DynamicQueryable(_dynamicQueryableContext) as IQueryable<object>;
+                var query = context.Product.DynamicQueryable(_dynamicQueryableContext) as IQueryable<object>;
 
                 query.Count().Should().Be(1);
             }
@@ -125,16 +125,16 @@ DataInitializer.InitializeSeed(context);
         [Fact]
         public void PlusCharInNameCase()
         {
-  using (var context = new DynamicQueryableDbContext())
-{
-       DataInitializer.InitializeSeed(context);
+            using (var context = new DynamicQueryableDbContext())
+            {
+                DataInitializer.InitializeSeed(context);
 
-      var dynamicQueryableContext = PrepareDynamicQuery(_queryStringAccessor);
-    _queryStringAccessor.SetQueryString($"ColorContains:i=green + red");
+                var dynamicQueryableContext = PrepareDynamicQuery(_queryStringAccessor);
+                _queryStringAccessor.SetQueryString($"ColorContains:i=green + red");
 
-           _profile.AllowedClauses = ClauseType.OrderBy | ClauseType.OrderByDesc | ClauseType.Filter | ClauseType.Select | ClauseType.WrapWith;
+                _profile.AllowedClauses = ClauseType.OrderBy | ClauseType.OrderByDesc | ClauseType.Filter | ClauseType.Select | ClauseType.WrapWith;
 
-     var query = context.Product.DynamicQueryable(_dynamicQueryableContext) as IQueryable<object>;
+                var query = context.Product.DynamicQueryable(_dynamicQueryableContext) as IQueryable<object>;
 
                 query.Count().Should().Be(1);
                 var first = query.First();
@@ -147,16 +147,16 @@ DataInitializer.InitializeSeed(context);
         [Fact]
         public void SortTest()
         {
- using (var context = new DynamicQueryableDbContext())
-   {
-    DataInitializer.InitializeSeed(context);
-               
-   var dynamicQueryableContext = PrepareDynamicQuery(_queryStringAccessor);
-       _queryStringAccessor.SetQueryString($"orderby=Weight,ListPrice");
+            using (var context = new DynamicQueryableDbContext())
+            {
+                DataInitializer.InitializeSeed(context);
 
-    //_profile.AllowedClauses = ClauseType.OrderBy | ClauseType.OrderByDesc;
+                var dynamicQueryableContext = PrepareDynamicQuery(_queryStringAccessor);
+                _queryStringAccessor.SetQueryString($"orderby=Weight,ListPrice");
 
-     var query = context.Product.DynamicQueryable(dynamicQueryableContext) as IQueryable<Product>;
+                //_profile.AllowedClauses = ClauseType.OrderBy | ClauseType.OrderByDesc;
+
+                var query = context.Product.DynamicQueryable(dynamicQueryableContext) as IQueryable<Product>;
 
                 var result = query?.ToList();
                 var manuallySorted = context.Product.ToList().OrderBy(x => x.Weight).ThenBy(product => product.ListPrice).ToList();
@@ -170,14 +170,14 @@ DataInitializer.InitializeSeed(context);
         [Fact]
         public void OrderByCategory()
         {
-        using (var context = new DynamicQueryableDbContext())
-        {
+            using (var context = new DynamicQueryableDbContext())
+            {
 
- DataInitializer.InitializeSeed(context);
+                DataInitializer.InitializeSeed(context);
 
-      var dynamicQueryableContext = PrepareDynamicQuery(_queryStringAccessor);
-       _queryStringAccessor.SetQueryString("orderby=productExtension.name");
-       var query = context.Product.DynamicQueryable(dynamicQueryableContext) as IQueryable<Product>;
+                var dynamicQueryableContext = PrepareDynamicQuery(_queryStringAccessor);
+                _queryStringAccessor.SetQueryString("orderby=productExtension.name");
+                var query = context.Product.DynamicQueryable(dynamicQueryableContext) as IQueryable<Product>;
                 var list = query?.ToList();
                 list.First().ProductExtension.Name.Should().NotBe("aaa");
                 var second = query.Last();
@@ -189,13 +189,13 @@ DataInitializer.InitializeSeed(context);
 
         private static DynamicQueryableContext PrepareDynamicQuery(SimpleQueryStringAccessor queryStringAccessor)
         {
-    var settings = new DynamicQueryableSettings();
-     settings.AllowedClauses = AllowedClauses;
-         settings.UseBaseType = true;
-       settings.MaxDepth = 2;
+            var settings = new DynamicQueryableSettings();
+            settings.AllowedClauses = AllowedClauses;
+            settings.UseBaseType = true;
+            settings.MaxDepth = 2;
             settings.DefaultToTake = 0;
             settings.DefaultOrderBy = null;
-     IDynamicQueryableProfile profile = new DynamicQueryableProfile(settings);
+            IDynamicQueryableProfile profile = new DynamicQueryableProfile(settings);
             var selectClauseHandler = new DefaultSelectClauseHandler();
             var orderByClauseHandler = new DefaultOrderByClauseHandler();
             var wrapWithClauseHandler = new DefaultWrapWithClauseHandler();

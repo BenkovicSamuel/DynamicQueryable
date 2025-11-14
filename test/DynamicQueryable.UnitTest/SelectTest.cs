@@ -775,7 +775,7 @@ namespace DynamicQueryable.UnitTest
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.Select(p => new
                 {
-                    p.Id,
+                    p.ProductId,
                     p.Rowguid,
                     p.Name,
                     p.Color,
@@ -943,7 +943,7 @@ namespace DynamicQueryable.UnitTest
 
                 DataInitializer.InitializeSeed(context);
                 var query = context.Product.DynamicQueryable(_autoQueryableContext) as IQueryable<object>;
-                var properties = query.First().GetType().GetProperties();
+                var properties = query.FirstOrDefault().GetType().GetProperties();
 
                 properties.Length.Should().Be(22);
                 

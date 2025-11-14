@@ -21,7 +21,7 @@ namespace DynamicQueryable.UnitTest.Mock
             builder.Entity<ProductExtension>().HasQueryFilter(b => !b.IsDeleted);
 
             builder.Entity<Product>().OwnsMany(x => x.MyComplexClass).WithOwner(x => x.Product).HasForeignKey(x => x.ProductId);
-            builder.Entity<Product>().HasKey(x => x.Id);
+            builder.Entity<Product>().HasKey(x => x.ProductId);
 
         }
 
